@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Traditionnel La Celle-Saint-Cloud | Au Petit Chez Soi</title>
+    <meta name="description"
+        content="Découvrez une cuisine fait maison dans une bâtisse du XVIIe siècle à 20 min de Paris. Patio, salle de réception et produits frais de saison. Réservez votre table !">
+    <meta name="keywords"
+        content="restaurant La Celle-Saint-Cloud, cuisine traditionnelle, fait maison, produits frais, restaurant XVIIe siècle">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Au Petit Chez Soi - Restaurant Traditionnel">
+    <meta property="og:description"
+        content="Cuisine fait maison dans un cadre historique du XVIIe siècle à La Celle-Saint-Cloud">
+    <meta property="og:type" content="restaurant">
+    <meta property="og:locale" content="fr_FR">
+    <link rel="canonical" href="https://aupetitchezsoi.fr/">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Schema.org Restaurant Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Au Petit Chez Soi",
+        "servesCuisine": ["Française", "Traditionnelle"],
+        "priceRange": "€€",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Adresse du Restaurant",
+            "addressLocality": "La Celle-Saint-Cloud",
+            "postalCode": "78170",
+            "addressCountry": "FR"
+        },
+        "url": "https://aupetitchezsoi.fr",
+        "telephone": "+33-X-XX-XX-XX-XX",
+        "menu": "https://aupetitchezsoi.fr/carte-restaurant-saison.html",
+        "acceptsReservations": "True",
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                "opens": "12:00",
+                "closes": "14:30"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                "opens": "19:00",
+                "closes": "22:30"
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Navigation Sticky -->
+    <nav class="nav" id="mainNav">
+        <div class="nav__container">
+            <a href="/" class="nav__logo">
+                <span class="nav__logo-text">Au Petit Chez Soi</span>
+            </a>
+
+            <ul class="nav__menu" id="navMenu">
+                <li><a href="carte-restaurant-saison.html" class="nav__link">La Carte</a></li>
+                <li><a href="restaurant-cadre-historique.html" class="nav__link">Le Lieu</a></li>
+                <li><a href="bar-tapas-terrasse.html" class="nav__link">Patio & Tapas</a></li>
+                <li><a href="privatisation-salle-reception.html" class="nav__link">Événements</a></li>
+                <li><a href="contact-reservation.html" class="nav__link">Contact</a></li>
+            </ul>
+
+            <a href="contact-reservation.html" class="nav__cta btn btn--primary">Réserver une Table</a>
+
+            <button class="nav__toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <div class="hero__overlay"></div>
+        <div class="hero__texture"></div>
+        <div class="hero__content">
+            <span class="hero__badge animate-fade-in">Restaurant Traditionnel</span>
+            <h1 class="hero__title animate-fade-in-up">La cuisine qui séduit <br><em>vos papilles</em></h1>
+            <p class="hero__subtitle animate-fade-in-up delay-1">Cuisine traditionnelle et fait maison dans un cadre
+                historique du XVIIème siècle</p>
+            <div class="hero__cta-group animate-fade-in-up delay-2">
+                <a href="carte-restaurant-saison.html" class="btn btn--outline">Voir la Carte de Saison</a>
+                <a href="contact-reservation.html" class="btn btn--primary btn--glow">Réserver</a>
+            </div>
+            <p class="hero__location animate-fade-in delay-3">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                La Celle-Saint-Cloud · À 20 min de Paris
+            </p>
+        </div>
+        <div class="hero__scroll">
+            <span>Découvrir</span>
+            <div class="hero__scroll-line"></div>
+        </div>
+    </header>
+
+    <!-- Section Promesse Culinaire -->
+    <section class="section section--promesse" id="promesse">
+        <div class="container">
+            <div class="promesse">
+                <div class="promesse__image reveal-left">
+                    <div class="promesse__image-wrapper">
+                        <img src="images/chef-cuisine.jpg" alt="Notre chef dressant une assiette avec précision"
+                            loading="lazy">
+                        <div class="promesse__image-accent"></div>
+                    </div>
+                </div>
+                <div class="promesse__content reveal-right">
+                    <span class="section__label">Notre Engagement</span>
+                    <h2 class="section__title">Du "Frais Maison",<br><em>de l'entrée au dessert</em></h2>
+                    <p class="section__text">Ici, pas d'assemblage. Notre carte évolue tous les 3 mois au rythme des
+                        saisons pour vous garantir le goût du vrai. Retrouvez nos incontournables et laissez-vous
+                        surprendre par nos créations saisonnières.</p>
+
+                    <div class="promesse__features">
+                        <div class="feature">
+                            <div class="feature__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z" />
+                                </svg>
+                            </div>
+                            <div class="feature__text">
+                                <strong>Produits de Saison</strong>
+                                <span>Sélection rigoureuse</span>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z" />
+                                </svg>
+                            </div>
+                            <div class="feature__text">
+                                <strong>100% Fait Maison</strong>
+                                <span>Du pain aux desserts</span>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z" />
+                                </svg>
+                            </div>
+                            <div class="feature__text">
+                                <strong>Carte Trimestrielle</strong>
+                                <span>Renouvellement constant</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="carte-restaurant-saison.html" class="btn btn--secondary">Découvrir notre Carte</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Atmosphère / Le Lieu -->
+    <section class="section section--atmosphere" id="atmosphere">
+        <div class="container">
+            <div class="atmosphere__header reveal-up">
+                <span class="section__label">L'Expérience</span>
+                <h2 class="section__title section__title--center">Comme à la maison,<br><em>l'histoire en plus</em></h2>
+                <p class="section__text section__text--center">À 20 min de Paris et Versailles, échappez-vous dans notre
+                    bâtisse du XVIIème siècle nichée dans le bourg médiéval. Un cadre authentique rénové pour votre
+                    confort.</p>
+            </div>
+
+            <div class="atmosphere__gallery">
+                <div class="gallery-item gallery-item--large reveal-scale">
+                    <img src="images/batisse-exterieur.jpg" alt="Façade de la bâtisse historique du XVIIe siècle"
+                        loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <span>Bâtisse du XVIIe siècle</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal-scale delay-1">
+                    <img src="images/salle-interieur.jpg" alt="Salle intérieure avec pierres apparentes" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <span>Salle authentique</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal-scale delay-2">
+                    <img src="images/details-pierres.jpg" alt="Détails architecturaux en pierre" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <span>Détails d'époque</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="atmosphere__tagline reveal-up">"Au Petit Chez Soi n'est pas qu'une adresse, c'est un sentiment."
+            </p>
+        </div>
+    </section>
+
+    <!-- Section Moments de Vie -->
+    <section class="section section--moments" id="moments">
+        <div class="container">
+            <div class="moments__header reveal-up">
+                <span class="section__label">Vos Occasions</span>
+                <h2 class="section__title section__title--center">Des espaces pour<br><em>chaque moment</em></h2>
+            </div>
+
+            <div class="moments__cards">
+                <article class="moment-card reveal-left">
+                    <div class="moment-card__image">
+                        <img src="images/patio-lounge.jpg" alt="Patio aménagé avec canapés et cocktails" loading="lazy">
+                        <div class="moment-card__badge">Nouveau</div>
+                    </div>
+                    <div class="moment-card__content">
+                        <h3 class="moment-card__title">Le Patio & Lounge</h3>
+                        <p class="moment-card__text">Cocktails, Tapas et Détente. Profitez de notre patio aménagé avec
+                            ses canapés confortables pour un moment décontracté.</p>
+                        <a href="bar-tapas-terrasse.html" class="btn btn--text">
+                            Découvrir l'espace
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="moment-card reveal-right">
+                    <div class="moment-card__image">
+                        <img src="images/salle-reception.jpg" alt="Salle de réception équipée avec écran géant"
+                            loading="lazy">
+                        <div class="moment-card__badge">Privatisation</div>
+                    </div>
+                    <div class="moment-card__content">
+                        <h3 class="moment-card__title">Vos Événements</h3>
+                        <p class="moment-card__text">Privatisation pour familles ou professionnels. Notre salle du 1er
+                            étage équipée d'un écran géant accueille vos moments importants.</p>
+                        <a href="privatisation-salle-reception.html" class="btn btn--text">
+                            Demander un devis
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Témoignages -->
+    <section class="section section--testimonials" id="testimonials">
+        <div class="container">
+            <div class="testimonials__header reveal-up">
+                <span class="section__label">Ils en parlent</span>
+                <h2 class="section__title section__title--center">Ce que nos clients<br><em>disent de nous</em></h2>
+            </div>
+
+            <div class="testimonials__grid">
+                <blockquote class="testimonial reveal-up">
+                    <div class="testimonial__stars">★★★★★</div>
+                    <p class="testimonial__text">"Un accueil chaleureux dans un cadre magnifique. Les pierres apparentes
+                        donnent un charme fou à ce lieu. La cuisine maison est un vrai délice !"</p>
+                    <footer class="testimonial__author">
+                        <span class="testimonial__name">Marie L.</span>
+                        <span class="testimonial__date">Décembre 2024</span>
+                    </footer>
+                </blockquote>
+
+                <blockquote class="testimonial reveal-up delay-1">
+                    <div class="testimonial__stars">★★★★★</div>
+                    <p class="testimonial__text">"Nous avons privatisé la salle pour l'anniversaire de ma mère. Tout
+                        était parfait, du service aux plats. Une vraie cuisine de qualité."</p>
+                    <footer class="testimonial__author">
+                        <span class="testimonial__name">Thomas B.</span>
+                        <span class="testimonial__date">Novembre 2024</span>
+                    </footer>
+                </blockquote>
+
+                <blockquote class="testimonial reveal-up delay-2">
+                    <div class="testimonial__stars">★★★★★</div>
+                    <p class="testimonial__text">"Le patio est devenu notre QG pour les afterworks. Ambiance relax,
+                        tapas délicieux et cocktails bien dosés. On reviendra !"</p>
+                    <footer class="testimonial__author">
+                        <span class="testimonial__name">Sophie & l'équipe</span>
+                        <span class="testimonial__date">Octobre 2024</span>
+                    </footer>
+                </blockquote>
+            </div>
+
+            <p class="testimonials__location reveal-up">Situé au cœur de <strong>La Celle-Saint-Cloud</strong></p>
+        </div>
+    </section>
+
+    <!-- Section CTA Final -->
+    <section class="section section--cta" id="cta-final">
+        <div class="cta-final">
+            <div class="cta-final__content reveal-up">
+                <h2 class="cta-final__title">Prêt à vivre l'expérience ?</h2>
+                <p class="cta-final__text">Réservez votre table et laissez-vous transporter dans notre univers culinaire
+                    et historique.</p>
+                <div class="cta-final__buttons">
+                    <a href="contact-reservation.html" class="btn btn--primary btn--large">Réserver maintenant</a>
+                    <a href="tel:+33XXXXXXXXX" class="btn btn--outline btn--large">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg>
+                        Nous appeler
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h3 class="footer__logo">Au Petit Chez Soi</h3>
+                    <p class="footer__tagline">Cuisine traditionnelle & fait maison<br>dans un cadre historique</p>
+                    <div class="footer__social">
+                        <a href="#" aria-label="Facebook" class="footer__social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram" class="footer__social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__nav">
+                    <h4 class="footer__title">Navigation</h4>
+                    <ul class="footer__links">
+                        <li><a href="carte-restaurant-saison.html">La Carte</a></li>
+                        <li><a href="restaurant-cadre-historique.html">Le Lieu</a></li>
+                        <li><a href="bar-tapas-terrasse.html">Patio & Tapas</a></li>
+                        <li><a href="privatisation-salle-reception.html">Événements</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__hours">
+                    <h4 class="footer__title">Horaires</h4>
+                    <ul class="footer__schedule">
+                        <li><span>Mardi - Samedi</span><span>12h - 14h30</span></li>
+                        <li><span>Mardi - Samedi</span><span>19h - 22h30</span></li>
+                        <li><span>Dimanche & Lundi</span><span>Fermé</span></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h4 class="footer__title">Contact</h4>
+                    <address class="footer__address">
+                        <p>Adresse du Restaurant<br>78170 La Celle-Saint-Cloud</p>
+                        <a href="tel:+33XXXXXXXXX">+33 X XX XX XX XX</a>
+                        <a href="mailto:contact@aupetitchezsoi.fr">contact@aupetitchezsoi.fr</a>
+                    </address>
+                    <a href="contact-reservation.html" class="btn btn--primary btn--small">Réserver</a>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2024 Au Petit Chez Soi. Tous droits réservés.</p>
+                <nav class="footer__legal">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bouton Réserver Sticky Mobile -->
+    <div class="sticky-cta" id="stickyCta">
+        <a href="contact-reservation.html" class="sticky-cta__btn">
+            <span>Réserver une table</span>
+        </a>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
