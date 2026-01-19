@@ -64,8 +64,17 @@
                 <p class="menu-season__text">Nos plats faits maison au fil des saisons</p>
             </div>
 
+            <!-- Filters -->
+            <div class="menu-filters reveal-up">
+                <button class="filter-btn active" data-filter="all">Tout</button>
+                <button class="filter-btn" data-filter="formules">Formules</button>
+                <button class="filter-btn" data-filter="entrees">Entrées</button>
+                <button class="filter-btn" data-filter="plats">Plats</button>
+                <button class="filter-btn" data-filter="desserts">Desserts</button>
+            </div>
+
             <!-- Menus (Moved to top) -->
-            <section class="menu-formules reveal-up">
+            <section class="menu-formules reveal-up" data-category="formules">
                 <h2 class="menu-formules__title">Nos Formules Midi</h2>
                 <p class="menu-category__subtitle"
                     style="text-align: center; margin-bottom: 2rem; color: var(--color-dark-60);">Du mardi au vendredi
@@ -98,7 +107,7 @@
                 </div>
             </section>
 
-            <section class="menu-formules reveal-up">
+            <section class="menu-formules reveal-up" data-category="formules">
                 <h2 class="menu-formules__title">Menu du P'tit Chess</h2>
                 <p class="menu-category__subtitle"
                     style="text-align: center; margin-bottom: 2rem; color: var(--color-dark-60);">Sauf dimanche et jours
@@ -126,7 +135,7 @@
             </section>
 
             <!-- Entrées -->
-            <section class="menu-category reveal-up">
+            <section class="menu-category reveal-up" data-category="entrees">
                 <h2 class="menu-category__title">Nos Entrées</h2>
                 <div class="menu-items">
                     <article class="menu-item">
@@ -221,7 +230,7 @@
             </section>
 
             <!-- Plats Végétariens -->
-            <section class="menu-category reveal-up">
+            <section class="menu-category reveal-up" data-category="plats">
                 <h2 class="menu-category__title">Nos Plats Végétariens</h2>
                 <div class="menu-items">
                     <article class="menu-item">
@@ -242,7 +251,7 @@
             </section>
 
             <!-- Poissons -->
-            <section class="menu-category reveal-up">
+            <section class="menu-category reveal-up" data-category="plats">
                 <h2 class="menu-category__title">Nos Poissons</h2>
                 <div class="menu-items">
                     <article class="menu-item">
@@ -270,7 +279,7 @@
             </section>
 
             <!-- Viandes -->
-            <section class="menu-category reveal-up">
+            <section class="menu-category reveal-up" data-category="plats">
                 <h2 class="menu-category__title">Nos Viandes</h2>
                 <p class="menu-category__subtitle"
                     style="text-align: center; margin-bottom: 2rem; color: var(--color-dark-60); font-style: italic;">
@@ -349,7 +358,7 @@
             </section>
 
             <!-- Pour les Petiots -->
-            <section class="menu-category reveal-up">
+            <section class="menu-category reveal-up" data-category="enfants">
                 <h2 class="menu-category__title">Pour les Petiots</h2>
                 <div class="menu-items" style="justify-content: center;">
                     <article class="menu-item" style="max-width: 600px; width: 100%;">
@@ -368,7 +377,7 @@
             </section>
 
             <!-- Desserts -->
-            <section class="menu-category reveal-up">
+            <section class="menu-category reveal-up" data-category="desserts">
                 <h2 class="menu-category__title">Nos Desserts Maison</h2>
                 <div class="menu-items">
                     <article class="menu-item">
@@ -527,6 +536,37 @@
 
     <script src="js/main.js"></script>
     <script src="js/dish-modal.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const menuSections = document.querySelectorAll('[data-category]');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active button
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    menuSections.forEach(section => {
+                        const category = section.getAttribute('data-category');
+
+                        if (filterValue === 'all') {
+                            section.style.display = 'block';
+                            // Optional: re-trigger animations if you use scroll reveal
+                        } else {
+                            if (category === filterValue) {
+                                section.style.display = 'block';
+                            } else {
+                                section.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
