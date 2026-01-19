@@ -17,11 +17,9 @@
     <meta property="og:locale" content="fr_FR">
     <link rel="canonical" href="https://aupetitchezsoi.fr/">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Fontshare - Gambetta + Satoshi -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;500;700&display=swap"
+        href="https://api.fontshare.com/v2/css?f[]=gambetta@400,401,500,501,600,601,700,701&f[]=satoshi@400,500,700,900&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
@@ -50,13 +48,19 @@
                 "@type": "OpeningHoursSpecification",
                 "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
                 "opens": "12:00",
-                "closes": "14:30"
+                "closes": "14:00"
             },
             {
                 "@type": "OpeningHoursSpecification",
                 "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
                 "opens": "19:00",
-                "closes": "22:30"
+                "closes": "22:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Sunday",
+                "opens": "12:00",
+                "closes": "14:00"
             }
         ]
     }
@@ -64,22 +68,24 @@
 </head>
 
 <body>
-    <!-- Navigation Sticky -->
+    <!-- Navigation -->
     <nav class="nav" id="mainNav">
         <div class="nav__container">
             <a href="/" class="nav__logo">
-                <span class="nav__logo-text">Au Petit Chez Soi</span>
+                <img src="images/logo.png" alt="Au Petit Chez Soi - Logo">
+                <!-- <span class="nav__logo-text">Au Petit Chez Soi</span> -->
             </a>
 
             <ul class="nav__menu" id="navMenu">
                 <li><a href="carte-restaurant-saison.html" class="nav__link">La Carte</a></li>
                 <li><a href="restaurant-cadre-historique.html" class="nav__link">Le Lieu</a></li>
-                <li><a href="bar-tapas-terrasse.html" class="nav__link">Patio & Tapas</a></li>
-                <li><a href="privatisation-salle-reception.html" class="nav__link">Événements</a></li>
+
                 <li><a href="contact-reservation.html" class="nav__link">Contact</a></li>
             </ul>
 
-            <a href="contact-reservation.html" class="nav__cta btn btn--primary">Réserver une Table</a>
+            <div class="nav__actions">
+                <a href="contact-reservation.html" class="nav__cta btn btn--primary">Réserver une Table</a>
+            </div>
 
             <button class="nav__toggle" id="navToggle" aria-label="Menu">
                 <span></span>
@@ -91,30 +97,223 @@
 
     <!-- Hero Section -->
     <header class="hero" id="hero">
-        <div class="hero__overlay"></div>
-        <div class="hero__texture"></div>
-        <div class="hero__content">
-            <span class="hero__badge animate-fade-in">Restaurant Traditionnel</span>
-            <h1 class="hero__title animate-fade-in-up">La cuisine qui séduit <br><em>vos papilles</em></h1>
-            <p class="hero__subtitle animate-fade-in-up delay-1">Cuisine traditionnelle et fait maison dans un cadre
-                historique du XVIIème siècle</p>
-            <div class="hero__cta-group animate-fade-in-up delay-2">
-                <a href="carte-restaurant-saison.html" class="btn btn--outline">Voir la Carte de Saison</a>
-                <a href="contact-reservation.html" class="btn btn--primary btn--glow">Réserver</a>
+        <div class="hero__container">
+            <!-- Content -->
+            <div class="hero__content animate-fade-in-up">
+                <span class="hero__badge">Restaurant Traditionnel</span>
+                <h1 class="hero__title">La cuisine qui séduit <br><em>vos papilles</em></h1>
+                <p class="hero__subtitle">Une cuisine de saison, brute et sincère.
+                    Vivez l'alliance du goût et de l'histoire dans notre bâtisse du XVIIème siècle rénovée.</p>
+                <div class="hero__cta-group">
+                    <a href="carte-restaurant-saison.html" class="btn btn--primary">Explorer le Menu</a>
+                    <a href="#promesse" class="btn btn--secondary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        Découvrir
+                    </a>
+                </div>
+                <p class="hero__location">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    La Celle-Saint-Cloud · À 20 min de Paris
+                </p>
             </div>
-            <p class="hero__location animate-fade-in delay-3">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-                La Celle-Saint-Cloud · À 20 min de Paris
-            </p>
+
+            <!-- Visual / Image -->
+            <div class="hero__visual animate-fade-in">
+                <div class="hero__image-wrapper">
+                    <div class="hero__image-circle"></div>
+                    <div class="hero__main-image">
+                        <img src="images/chef-cuisine.jpg" alt="Plat signature du restaurant Au Petit Chez Soi">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories -->
+            <div class="hero__categories animate-fade-in delay-2">
+                <div class="category-tag">
+                    <span class="category-tag__icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                            <line x1="6" y1="1" x2="6" y2="4"></line>
+                            <line x1="10" y1="1" x2="10" y2="4"></line>
+                            <line x1="14" y1="1" x2="14" y2="4"></line>
+                        </svg>
+                    </span>
+                    <span class="category-tag__text">Plats</span>
+                </div>
+                <div class="category-tag">
+                    <span class="category-tag__icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                        </svg>
+                    </span>
+                    <span class="category-tag__text">Desserts</span>
+                </div>
+                <div class="category-tag">
+                    <span class="category-tag__icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M8 22h8M12 15v7M5.8 4h12.4a2 2 0 0 1 1.9 2.7L15 15H9L4.1 6.7A2 2 0 0 1 5.8 4z" />
+                        </svg>
+                    </span>
+                    <span class="category-tag__text">Vins</span>
+                </div>
+                <div class="category-tag">
+                    <span class="category-tag__icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </span>
+                    <span class="category-tag__text">Entrées</span>
+                </div>
+                <div class="category-tag">
+                    <span class="category-tag__icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                            </polygon>
+                        </svg>
+                    </span>
+                    <span class="category-tag__text">Cocktails</span>
+                </div>
+            </div>
         </div>
+
+        <!-- Decorative elements -->
+        <div class="deco-dots hero__deco-dots"></div>
+        <div class="deco-circle hero__deco-circle"></div>
+
         <div class="hero__scroll">
             <span>Découvrir</span>
             <div class="hero__scroll-line"></div>
         </div>
     </header>
+
+    <!-- Section Plats Populaires -->
+    <section class="section section--dishes" id="dishes">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <span class="section__label">Nos Spécialités</span>
+                    <h2 class="section__title">Plats Populaires</h2>
+                </div>
+                <div class="section-header__nav">
+                    <button class="section-header__btn" aria-label="Précédent">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    <button class="section-header__btn" aria-label="Suivant">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="dishes__grid">
+                <article class="dish-card reveal-up">
+                    <div class="dish-card__image">
+                        <img src="images/foie-gras.png" alt="Foie gras maison">
+                    </div>
+                    <div class="dish-card__content">
+                        <h3 class="dish-card__title">Foie Gras Maison</h3>
+                        <div class="dish-card__rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="dish-card__description">Foie gras de canard mi-cuit, chutney de figues et pain
+                            d'épices toasté.</p>
+                        <div class="dish-card__footer">
+                            <span class="dish-card__price">€24.00</span>
+                            <button class="dish-card__btn">Voir détails</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="dish-card reveal-up delay-1">
+                    <div class="dish-card__image">
+                        <img src="images/escargots.png" alt="Escargots de Bourgogne">
+                    </div>
+                    <div class="dish-card__content">
+                        <h3 class="dish-card__title">Escargots</h3>
+                        <div class="dish-card__rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star star--empty">★</span>
+                        </div>
+                        <p class="dish-card__description">Escargots de Bourgogne au beurre persillé, servis dans leur
+                            coquille.</p>
+                        <div class="dish-card__footer">
+                            <span class="dish-card__price">€16.00</span>
+                            <button class="dish-card__btn">Voir détails</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="dish-card reveal-up delay-2">
+                    <div class="dish-card__image">
+                        <img src="images/os-a-moelle.png" alt="Os à moelle">
+                    </div>
+                    <div class="dish-card__content">
+                        <h3 class="dish-card__title">Os à Moelle</h3>
+                        <div class="dish-card__rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="dish-card__description">Os à moelle rôti, fleur de sel et pain de campagne grillé.</p>
+                        <div class="dish-card__footer">
+                            <span class="dish-card__price">€18.00</span>
+                            <button class="dish-card__btn">Voir détails</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="dish-card reveal-up delay-3">
+                    <div class="dish-card__image">
+                        <img src="images/mousse-chocolat.png" alt="Mousse au chocolat">
+                    </div>
+                    <div class="dish-card__content">
+                        <h3 class="dish-card__title">Mousse Chocolat</h3>
+                        <div class="dish-card__rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                        </div>
+                        <p class="dish-card__description">Mousse au chocolat noir 70%, crème fouettée et éclats de
+                            fèves.</p>
+                        <div class="dish-card__footer">
+                            <span class="dish-card__price">€12.00</span>
+                            <button class="dish-card__btn">Voir détails</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
 
     <!-- Section Promesse Culinaire -->
     <section class="section section--promesse" id="promesse">
@@ -139,8 +338,9 @@
                             <div class="feature__icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
-                                    <path
-                                        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z" />
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                    <path d="M2 17l10 5 10-5" />
+                                    <path d="M2 12l10 5 10-5" />
                                 </svg>
                             </div>
                             <div class="feature__text">
@@ -152,8 +352,7 @@
                             <div class="feature__icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
-                                    <path
-                                        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z" />
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                                 </svg>
                             </div>
                             <div class="feature__text">
@@ -165,8 +364,10 @@
                             <div class="feature__icon">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
-                                    <path
-                                        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z" />
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
                                 </svg>
                             </div>
                             <div class="feature__text">
@@ -176,7 +377,94 @@
                         </div>
                     </div>
 
-                    <a href="carte-restaurant-saison.html" class="btn btn--secondary">Découvrir notre Carte</a>
+                    <a href="carte-restaurant-saison.html" class="btn btn--primary">Découvrir notre Carte</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services -->
+    <section class="section section--services" id="services">
+        <div class="container">
+            <div class="services">
+                <div class="services__image reveal-left">
+                    <div class="services__image-wrapper">
+                        <img src="images/salle-interieur.jpg" alt="Chef cuisinier Au Petit Chez Soi" loading="lazy">
+                    </div>
+                </div>
+                <div class="services__content reveal-right">
+                    <span class="section__label">Nos Services</span>
+                    <h2>Plus qu'un Restaurant,<br><em>votre second chez-vous</em></h2>
+                    <p>Au Petit Chez Soi, nous cultivons l'art de recevoir sans chichis mais avec élégance.
+                        Un service attentionné, une ambiance feutrée et la promesse d'un moment hors du temps,
+                        loin du tumulte parisien.</p>
+
+                    <div class="services__grid">
+                        <div class="service-item">
+                            <div class="service-item__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
+                                    </path>
+                                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                                </svg>
+                            </div>
+                            <span class="service-item__text">Vente à Emporter</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                            </div>
+                            <span class="service-item__text">Réservation 24/7</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                            </div>
+                            <span class="service-item__text">Privatisation</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </div>
+                            <span class="service-item__text">Cadre Historique</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                    <path d="M2 17l10 5 10-5"></path>
+                                    <path d="M2 12l10 5 10-5"></path>
+                                </svg>
+                            </div>
+                            <span class="service-item__text">Hygiène Irréprochable</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-item__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <span class="service-item__text">Maîtres Restaurateurs</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -188,9 +476,9 @@
             <div class="atmosphere__header reveal-up">
                 <span class="section__label">L'Expérience</span>
                 <h2 class="section__title section__title--center">Comme à la maison,<br><em>l'histoire en plus</em></h2>
-                <p class="section__text section__text--center">À 20 min de Paris et Versailles, échappez-vous dans notre
-                    bâtisse du XVIIème siècle nichée dans le bourg médiéval. Un cadre authentique rénové pour votre
-                    confort.</p>
+                <p class="section__text section__text--center">À 20 min de Paris, le temps s'arrête.
+                    Poutres d'époque, pierres apparentes et confort moderne : nous avons rénové cette bâtisse du XVIIème
+                    pour en faire un cocon chaleureux, où chaque recoin raconte une histoire.</p>
             </div>
 
             <div class="atmosphere__gallery">
@@ -220,56 +508,7 @@
         </div>
     </section>
 
-    <!-- Section Moments de Vie -->
-    <section class="section section--moments" id="moments">
-        <div class="container">
-            <div class="moments__header reveal-up">
-                <span class="section__label">Vos Occasions</span>
-                <h2 class="section__title section__title--center">Des espaces pour<br><em>chaque moment</em></h2>
-            </div>
 
-            <div class="moments__cards">
-                <article class="moment-card reveal-left">
-                    <div class="moment-card__image">
-                        <img src="images/patio-lounge.jpg" alt="Patio aménagé avec canapés et cocktails" loading="lazy">
-                        <div class="moment-card__badge">Nouveau</div>
-                    </div>
-                    <div class="moment-card__content">
-                        <h3 class="moment-card__title">Le Patio & Lounge</h3>
-                        <p class="moment-card__text">Cocktails, Tapas et Détente. Profitez de notre patio aménagé avec
-                            ses canapés confortables pour un moment décontracté.</p>
-                        <a href="bar-tapas-terrasse.html" class="btn btn--text">
-                            Découvrir l'espace
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="moment-card reveal-right">
-                    <div class="moment-card__image">
-                        <img src="images/salle-reception.jpg" alt="Salle de réception équipée avec écran géant"
-                            loading="lazy">
-                        <div class="moment-card__badge">Privatisation</div>
-                    </div>
-                    <div class="moment-card__content">
-                        <h3 class="moment-card__title">Vos Événements</h3>
-                        <p class="moment-card__text">Privatisation pour familles ou professionnels. Notre salle du 1er
-                            étage équipée d'un écran géant accueille vos moments importants.</p>
-                        <a href="privatisation-salle-reception.html" class="btn btn--text">
-                            Demander un devis
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
 
     <!-- Section Témoignages -->
     <section class="section section--testimonials" id="testimonials">
@@ -342,16 +581,18 @@
         <div class="container">
             <div class="footer__grid">
                 <div class="footer__brand">
-                    <h3 class="footer__logo">Au Petit Chez Soi</h3>
+                    <h3 class="footer__logo">
+                        <img src="images/logo.png" alt="Au Petit Chez Soi" style="height: 60px; width: auto;">
+                    </h3>
                     <p class="footer__tagline">Cuisine traditionnelle & fait maison<br>dans un cadre historique</p>
                     <div class="footer__social">
                         <a href="#" aria-label="Facebook" class="footer__social-link">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                             </svg>
                         </a>
                         <a href="#" aria-label="Instagram" class="footer__social-link">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
@@ -366,17 +607,16 @@
                     <ul class="footer__links">
                         <li><a href="carte-restaurant-saison.html">La Carte</a></li>
                         <li><a href="restaurant-cadre-historique.html">Le Lieu</a></li>
-                        <li><a href="bar-tapas-terrasse.html">Patio & Tapas</a></li>
-                        <li><a href="privatisation-salle-reception.html">Événements</a></li>
+
                     </ul>
                 </div>
 
                 <div class="footer__hours">
                     <h4 class="footer__title">Horaires</h4>
                     <ul class="footer__schedule">
-                        <li><span>Mardi - Samedi</span><span>12h - 14h30</span></li>
-                        <li><span>Mardi - Samedi</span><span>19h - 22h30</span></li>
-                        <li><span>Dimanche & Lundi</span><span>Fermé</span></li>
+                        <li><span>Mar - Sam</span><span>12h-14h / 19h-22h</span></li>
+                        <li><span>Dimanche</span><span>12h - 14h</span></li>
+                        <li><span>Lundi</span><span>Fermé</span></li>
                     </ul>
                 </div>
 
@@ -384,8 +624,22 @@
                     <h4 class="footer__title">Contact</h4>
                     <address class="footer__address">
                         <p>Adresse du Restaurant<br>78170 La Celle-Saint-Cloud</p>
-                        <a href="tel:+33XXXXXXXXX">+33 X XX XX XX XX</a>
-                        <a href="mailto:contact@aupetitchezsoi.fr">contact@aupetitchezsoi.fr</a>
+                        <a href="tel:+33XXXXXXXXX">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                            +33 X XX XX XX XX
+                        </a>
+                        <a href="mailto:contact@aupetitchezsoi.fr">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            contact@aupetitchezsoi.fr
+                        </a>
                     </address>
                     <a href="contact-reservation.html" class="btn btn--primary btn--small">Réserver</a>
                 </div>

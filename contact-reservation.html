@@ -4,257 +4,915 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Réservez votre table Au Petit Chez Soi | Contact</title>
+    <title>Contact & Réservation | Au Petit Chez Soi</title>
     <meta name="description"
-        content="Réservez votre table au restaurant Au Petit Chez Soi à La Celle-Saint-Cloud. Contactez-nous par téléphone ou via notre formulaire. Horaires et accès.">
+        content="Réservez votre table au restaurant Au Petit Chez Soi à La Celle-Saint-Cloud. Contactez-nous par téléphone ou via notre formulaire.">
     <link rel="canonical" href="https://aupetitchezsoi.fr/contact-reservation.html">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Fontshare - Gambetta + Satoshi -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;500;700&display=swap"
+        href="https://api.fontshare.com/v2/css?f[]=gambetta@400,401,500,501,600,601,700,701&f[]=satoshi@400,500,700,900&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    <style>
+        /* Page Contact Simplifiée */
+        .contact-page {
+            min-height: 100vh;
+            background: var(--color-bg);
+            padding-top: 100px;
+        }
+
+        .contact-hero {
+            text-align: center;
+            padding: 4rem 1.5rem 3rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--color-dark);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .contact-hero__title em {
+            color: var(--color-orange);
+            font-style: italic;
+        }
+
+        .contact-hero__subtitle {
+            font-size: 1.1rem;
+            color: var(--color-dark-60);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Quick Contact */
+        .quick-contact {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            padding: 2rem 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .quick-contact__item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem 2rem;
+            background: white;
+            border: 2px solid var(--color-dark);
+            text-decoration: none;
+            color: var(--color-dark);
+            transition: all 0.3s ease;
+        }
+
+        .quick-contact__item:hover {
+            background: var(--color-orange);
+            border-color: var(--color-orange);
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        .quick-contact__item svg {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+        }
+
+        .quick-contact__text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quick-contact__label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+        }
+
+        .quick-contact__value {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        /* Reservation Form */
+        .reservation-section {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 5rem;
+            transition: max-width 0.4s ease;
+            /* Smooth transition */
+        }
+
+        .reservation-section.wide-view {
+            max-width: 950px;
+        }
+
+        .reservation-form {
+            background: white;
+            border: 2px solid var(--color-dark);
+            padding: 3rem 2.5rem;
+        }
+
+        .reservation-form__header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .reservation-form__title {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            color: var(--color-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .reservation-form__subtitle {
+            font-size: 0.9rem;
+            color: var(--color-dark-60);
+        }
+
+        /* Animated Input Group (Staggered Animation) */
+        .input-group {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .input-group__input,
+        .input-group__textarea {
+            width: 100%;
+            padding: 1rem 0 0.75rem;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            color: var(--color-dark);
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--color-dark);
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        /* Select styling is slightly different due to native behavior */
+        .input-group__select {
+            width: 100%;
+            padding: 1rem 0 0.75rem;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            color: var(--color-dark);
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--color-dark);
+            outline: none;
+            cursor: pointer;
+        }
+
+        .input-group__input:focus,
+        .input-group__select:focus,
+        .input-group__textarea:focus {
+            border-color: var(--color-orange);
+        }
+
+        /* Messages */
+        .success-message {
+            display: none;
+            background: white;
+            border: 2px solid var(--color-primary);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 20px;
+        }
+
+        .success-message.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-message__icon {
+            width: 64px;
+            height: 64px;
+            background: var(--color-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--color-primary);
+        }
+
+        .success-message__title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-dark);
+        }
+
+        .success-message__text {
+            color: var(--color-dark-80);
+            margin-bottom: 2rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Checkbox Override */
+        .input-group--checkbox {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        /* Label styling */
+        .input-group__label {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            pointer-events: none;
+            font-size: 1rem;
+            color: var(--color-dark-60);
+            line-height: 1;
+        }
+
+        /* Specific alignment for textarea label */
+        .input-group__textarea~.input-group__label {
+            top: 1.5rem;
+        }
+
+        /* Letter animation spans */
+        .input-group__label span {
+            display: inline-block;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                color 0.3s ease;
+            transform-origin: center;
+            will-change: transform, color;
+        }
+
+        /* Active State Classes */
+        .input-group.active .input-group__label span,
+        .input-group.filled .input-group__label span {
+            transform: translateY(-120%) scale(0.85);
+            color: var(--color-zinc-500, #71717a);
+            /* Fallback color resembling Tailwind zinc-500 */
+        }
+
+        .input-group.active .input-group__label span {
+            color: var(--color-orange);
+            /* Active color when focused */
+            font-weight: 500;
+        }
+
+        /* Select Static Label (fallback for complex selects or dates) */
+        .input-group__label--static {
+            top: -0.25rem;
+            transform: translateY(0) scale(0.85);
+            color: var(--color-orange);
+            font-weight: 500;
+        }
+
+        /* Row for date/time */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 500px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Submit Button */
+        .reservation-form__submit {
+            width: 100%;
+            padding: 1.25rem 2rem;
+            margin-top: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: var(--color-orange);
+            color: white;
+            border: 2px solid var(--color-orange);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .reservation-form__submit:hover {
+            background: var(--color-dark);
+            border-color: var(--color-dark);
+        }
+
+        .reservation-form__note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--color-dark-60);
+            margin-top: 1.5rem;
+        }
+
+        /* Hours & Location */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .info-card {
+            background: white;
+            border: 2px solid var(--color-dark);
+            padding: 2rem;
+        }
+
+        .info-card__title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--color-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .info-card__title svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-orange);
+        }
+
+        .info-card__content {
+            font-size: 0.95rem;
+            color: var(--color-dark-80);
+            line-height: 1.8;
+        }
+
+        .info-card__content strong {
+            color: var(--color-dark);
+        }
+
+        /* Map */
+        .map-section {
+            width: 100%;
+            height: 350px;
+            border-top: 2px solid var(--color-dark);
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(30%);
+        }
+
+        /* Footer minimal */
+        .footer-minimal {
+            background: var(--color-dark);
+            color: white;
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-minimal p {
+            opacity: 0.7;
+            font-size: 0.85rem;
+        }
+
+        .footer-minimal a {
+            color: var(--color-orange);
+            text-decoration: none;
+        }
+    </style>
 </head>
 
-<body>
+<body class="contact-page">
     <!-- Navigation -->
     <nav class="nav scrolled" id="mainNav">
         <div class="nav__container">
-            <a href="/" class="nav__logo">Au Petit Chez Soi</a>
+            <a href="/" class="nav__logo">
+                <img src="images/logo.png" alt="Au Petit Chez Soi - Logo">
+                <!-- <span class="nav__logo-text">Au Petit Chez Soi</span> -->
+            </a>
+
             <ul class="nav__menu" id="navMenu">
                 <li><a href="carte-restaurant-saison.html" class="nav__link">La Carte</a></li>
                 <li><a href="restaurant-cadre-historique.html" class="nav__link">Le Lieu</a></li>
-                <li><a href="bar-tapas-terrasse.html" class="nav__link">Patio & Tapas</a></li>
-                <li><a href="privatisation-salle-reception.html" class="nav__link">Événements</a></li>
+
                 <li><a href="contact-reservation.html" class="nav__link nav__link--active">Contact</a></li>
             </ul>
-            <a href="#reservation" class="nav__cta btn btn--primary">Réserver</a>
+
+            <div class="nav__actions">
+                <a href="#reservation" class="nav__cta btn btn--primary">Réserver</a>
+            </div>
+
             <button class="nav__toggle" id="navToggle" aria-label="Menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <header class="page-header">
-        <div class="page-header__content">
-            <span class="page-header__label">Contact</span>
-            <h1 class="page-header__title">Réservez votre table<br><em>Au Petit Chez Soi</em></h1>
-            <p class="page-header__text">Par téléphone ou en ligne, nous avons hâte de vous accueillir.</p>
-        </div>
-    </header>
-
-    <!-- Main Content -->
     <main>
-        <!-- Contact Section -->
-        <section class="section contact-main">
-            <div class="container">
-                <div class="contact-grid">
-                    <!-- Infos de contact -->
-                    <div class="contact-info reveal-left">
-                        <div class="contact-block">
-                            <h2 class="contact-block__title">Réservation par téléphone</h2>
-                            <p class="contact-block__text">Le moyen le plus rapide pour réserver</p>
-                            <a href="tel:+33XXXXXXXXX" class="contact-phone">
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path
-                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                                </svg>
-                                +33 X XX XX XX XX
-                            </a>
-                        </div>
+        <!-- Hero -->
+        <section class="contact-hero">
+            <h1 class="contact-hero__title">Réservez <em>votre table</em></h1>
+            <p class="contact-hero__subtitle">Nous avons hâte de vous accueillir dans notre cadre historique.</p>
+        </section>
 
-                        <div class="contact-block">
-                            <h3 class="contact-block__subtitle">Horaires d'ouverture</h3>
-                            <ul class="contact-hours">
-                                <li>
-                                    <span class="day">Mardi - Samedi</span>
-                                    <div class="times">
-                                        <span>12h00 - 14h30</span>
-                                        <span>19h00 - 22h30</span>
+
+
+        <!-- Reservation Form -->
+        <section class="reservation-section" id="reservation">
+
+            <div class="success-message" id="successMessage">
+                <div class="success-message__icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+                <h3 class="success-message__title">Message Bien Reçu !</h3>
+                <p class="success-message__text">Merci pour votre demande. Nous reviendrons vers vous très vite pour
+                    confirmer votre réservation.</p>
+                <button type="button" class="btn btn--primary" id="successClose">Faire une autre réservation</button>
+            </div>
+
+            <form class="reservation-form" action="javascript:void(0);" id="reservationForm">
+                <div class="reservation-form__header">
+                    <h2 class="reservation-form__title">Réservation en ligne</h2>
+                    <p class="reservation-form__subtitle">Étape <span id="currentStep">1</span>/2</p>
+                </div>
+
+                <!-- Step 1: Coordonnées -->
+                <div id="step-1" class="form-step active">
+                    <div class="input-group">
+                        <input type="text" class="input-group__input" id="name" name="name" required>
+                        <label class="input-group__label" for="name" data-label="Nom & Prénom"></label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="tel" class="input-group__input" id="phone" name="phone" required>
+                        <label class="input-group__label" for="phone" data-label="Téléphone"></label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="email" class="input-group__input" id="email" name="email" required>
+                        <label class="input-group__label" for="email" data-label="Email"></label>
+                    </div>
+
+                    <button type="button" class="reservation-form__submit" id="nextBtn">Suivant</button>
+                </div>
+
+                <!-- Step 2: Date & Détails -->
+                <div id="step-2" class="form-step hidden">
+                    <h3 class="reservation-form__title"
+                        style="font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center;">Votre Réservation</h3>
+
+                    <div class="bento-grid">
+                        <!-- Calendar Card (Large) -->
+                        <div class="bento-card bento-card--large">
+                            <div class="bento-inner">
+                                <div class="calendar-header">
+                                    <div class="calendar-header-info">
+                                        <span class="calendar-current-date" id="calendarMonthYear">Octobre 2023</span>
+                                        <span class="calendar-dot-separator"></span>
+                                        <p class="calendar-subtitle">Sélectionnez une date</p>
                                     </div>
-                                </li>
-                                <li>
-                                    <span class="day">Dimanche & Lundi</span>
-                                    <span class="closed">Fermé</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="contact-block">
-                            <h3 class="contact-block__subtitle">Nous trouver</h3>
-                            <address class="contact-address">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                    <circle cx="12" cy="10" r="3" />
-                                </svg>
-                                <div>
-                                    <p>Adresse du Restaurant</p>
-                                    <p>78170 La Celle-Saint-Cloud</p>
+                                    <div class="calendar-nav">
+                                        <button type="button" class="calendar-nav-btn" id="prevMonth">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M15 18l-6-6 6-6" />
+                                            </svg>
+                                        </button>
+                                        <button type="button" class="calendar-nav-btn" id="nextMonth">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2">
+                                                <path d="M9 18l6-6-6-6" />
+                                            </svg>
+                                        </button>
+                                    </div>
                                 </div>
-                            </address>
-                            <p class="contact-parking">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <circle cx="12" cy="12" r="10" />
-                                    <path d="M9 17V7h4a3 3 0 0 1 0 6H9" />
-                                </svg>
-                                Parking gratuit à proximité
-                            </p>
+                                <div class="calendar-grid" id="calendarGrid">
+                                    <!-- Generated JS -->
+                                </div>
+                                <input type="hidden" id="selectedDate" name="date" required>
+                            </div>
                         </div>
 
-                        <div class="contact-block">
-                            <h3 class="contact-block__subtitle">Email</h3>
-                            <a href="mailto:contact@aupetitchezsoi.fr" class="contact-email">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2">
-                                    <path
-                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                    <polyline points="22,6 12,13 2,6" />
-                                </svg>
-                                contact@aupetitchezsoi.fr
-                            </a>
+                        <!-- Time Card -->
+                        <div class="bento-card">
+                            <div class="bento-inner">
+                                <h4 class="bento-title">Heure</h4>
+                                <div class="time-grid" id="timeGrid">
+                                    <button type="button" class="time-slot-btn" data-value="12:00">12:00</button>
+                                    <button type="button" class="time-slot-btn" data-value="12:30">12:30</button>
+                                    <button type="button" class="time-slot-btn" data-value="13:00">13:00</button>
+                                    <button type="button" class="time-slot-btn" data-value="13:30">13:30</button>
+                                    <button type="button" class="time-slot-btn" data-value="19:00">19:00</button>
+                                    <button type="button" class="time-slot-btn" data-value="19:30">19:30</button>
+                                    <button type="button" class="time-slot-btn" data-value="20:00">20:00</button>
+                                    <button type="button" class="time-slot-btn" data-value="20:30">20:30</button>
+                                    <button type="button" class="time-slot-btn" data-value="21:00">21:00</button>
+                                </div>
+                                <input type="hidden" id="time" name="time" required>
+                            </div>
+                        </div>
+
+                        <!-- Guests Card -->
+                        <div class="bento-card">
+                            <div class="bento-inner">
+                                <h4 class="bento-title">Personnes</h4>
+                                <div class="guest-counter-wrapper">
+                                    <button type="button" class="guest-btn" id="guestMinus">-</button>
+                                    <div class="guest-display">
+                                        <span class="guest-count-number" id="guestCountDisplay">2</span>
+                                    </div>
+                                    <button type="button" class="guest-btn" id="guestPlus">+</button>
+                                </div>
+                                <input type="hidden" id="guests" name="guests" value="2" required>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Formulaire de réservation -->
-                    <div class="contact-form-wrapper reveal-right" id="reservation">
-                        <h2 class="contact-form__title">Réservation en ligne</h2>
-                        <p class="contact-form__subtitle">Nous confirmerons votre réservation par téléphone ou email.
-                        </p>
-
-                        <form class="contact-form" action="#" method="POST">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="resa-name">Votre nom *</label>
-                                    <input type="text" id="resa-name" name="name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="resa-phone">Téléphone *</label>
-                                    <input type="tel" id="resa-phone" name="phone" required>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="resa-email">Email *</label>
-                                <input type="email" id="resa-email" name="email" required>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="resa-date">Date *</label>
-                                    <input type="date" id="resa-date" name="date" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="resa-time">Heure *</label>
-                                    <select id="resa-time" name="time" required>
-                                        <option value="">Sélectionnez</option>
-                                        <optgroup label="Déjeuner">
-                                            <option value="12:00">12h00</option>
-                                            <option value="12:30">12h30</option>
-                                            <option value="13:00">13h00</option>
-                                            <option value="13:30">13h30</option>
-                                        </optgroup>
-                                        <optgroup label="Dîner">
-                                            <option value="19:00">19h00</option>
-                                            <option value="19:30">19h30</option>
-                                            <option value="20:00">20h00</option>
-                                            <option value="20:30">20h30</option>
-                                            <option value="21:00">21h00</option>
-                                        </optgroup>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="resa-guests">Nombre de personnes *</label>
-                                <select id="resa-guests" name="guests" required>
-                                    <option value="">Sélectionnez</option>
-                                    <option value="1">1 personne</option>
-                                    <option value="2">2 personnes</option>
-                                    <option value="3">3 personnes</option>
-                                    <option value="4">4 personnes</option>
-                                    <option value="5">5 personnes</option>
-                                    <option value="6">6 personnes</option>
-                                    <option value="7">7 personnes</option>
-                                    <option value="8">8 personnes</option>
-                                    <option value="9+">9+ (nous contacter)</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="resa-message">Demandes particulières</label>
-                                <textarea id="resa-message" name="message" rows="3"
-                                    placeholder="Allergies, occasion spéciale, demande de placement..."></textarea>
-                            </div>
-
-                            <button type="submit" class="btn btn--primary btn--large btn--full">
-                                Demander cette réservation
-                            </button>
-
-                            <p class="form-note">* Champs obligatoires. Réservation sous réserve de disponibilité.</p>
-                        </form>
+                    <div class="input-group">
+                        <textarea class="input-group__textarea" id="message" name="message" rows="2"></textarea>
+                        <label class="input-group__label" for="message" data-label="Message (optionnel)"></label>
                     </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="backBtn">Retour</button>
+                        <button type="button" class="reservation-form__submit" style="margin-top:0;"
+                            id="confirmBtn">Confirmer</button>
+                    </div>
+                </div>
+
+                <p class="reservation-form__note">Réservation confirmée par téléphone ou email sous 24h.</p>
+            </form>
+        </section>
+
+        <!-- Info Cards -->
+        <section class="info-grid">
+            <div class="info-card">
+                <h3 class="info-card__title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    Horaires
+                </h3>
+                <div class="info-card__content">
+                    <strong>Mardi - Samedi</strong><br>
+                    12h00 – 14h00 · 19h00 – 22h00<br><br>
+                    <strong>Dimanche</strong><br>
+                    12h00 – 14h00<br><br>
+                    <strong>Lundi</strong><br>
+                    Fermé
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3 class="info-card__title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    Adresse
+                </h3>
+                <div class="info-card__content">
+                    <strong>Au Petit Chez Soi</strong><br>
+                    Rue du Centre<br>
+                    78170 La Celle-Saint-Cloud<br><br>
+                    <strong>Parking</strong> gratuit à proximité
                 </div>
             </div>
         </section>
 
-        <!-- Map Section -->
-        <section class="section contact-map">
-            <div class="map-wrapper">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2626.5!2d2.13!3d48.84!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sLa%20Celle-Saint-Cloud!5e0!3m2!1sfr!2sfr!4v1234567890"
-                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    title="Localisation Au Petit Chez Soi à La Celle-Saint-Cloud">
-                </iframe>
-            </div>
+        <!-- Map -->
+        <section class="map-section">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2626.5!2d2.13!3d48.84!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sLa%20Celle-Saint-Cloud!5e0!3m2!1sfr!2sfr!4v1234567890"
+                allowfullscreen="" loading="lazy" title="Localisation Au Petit Chez Soi">
+            </iframe>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer" id="footer">
-        <div class="container">
-            <div class="footer__grid">
-                <div class="footer__brand">
-                    <h3 class="footer__logo">Au Petit Chez Soi</h3>
-                    <p class="footer__tagline">Cuisine traditionnelle & fait maison<br>dans un cadre historique</p>
-                </div>
-                <div class="footer__nav">
-                    <h4 class="footer__title">Navigation</h4>
-                    <ul class="footer__links">
-                        <li><a href="carte-restaurant-saison.html">La Carte</a></li>
-                        <li><a href="restaurant-cadre-historique.html">Le Lieu</a></li>
-                        <li><a href="bar-tapas-terrasse.html">Patio & Tapas</a></li>
-                        <li><a href="privatisation-salle-reception.html">Événements</a></li>
-                    </ul>
-                </div>
-                <div class="footer__hours">
-                    <h4 class="footer__title">Horaires</h4>
-                    <ul class="footer__schedule">
-                        <li><span>Mardi - Samedi</span><span>12h - 14h30</span></li>
-                        <li><span>Mardi - Samedi</span><span>19h - 22h30</span></li>
-                    </ul>
-                </div>
-                <div class="footer__contact">
-                    <h4 class="footer__title">Contact</h4>
-                    <address class="footer__address">
-                        <p>78170 La Celle-Saint-Cloud</p>
-                        <a href="tel:+33XXXXXXXXX">+33 X XX XX XX XX</a>
-                    </address>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <p>&copy; 2024 Au Petit Chez Soi. Tous droits réservés.</p>
-            </div>
-        </div>
+    <!-- Footer Minimal -->
+    <footer class="footer-minimal">
+        <p>&copy; 2024 Au Petit Chez Soi · <a href="/">Retour à l'accueil</a></p>
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Input Animations (Existing Logic) ---
+            const inputGroups = document.querySelectorAll('.input-group');
+
+            inputGroups.forEach(group => {
+                const label = group.querySelector('.input-group__label');
+                const text = label.getAttribute('data-label');
+                const input = group.querySelector('.input-group__input, .input-group__textarea, .input-group__select');
+
+                if (text && !label.classList.contains('input-group__label--static')) {
+                    label.innerHTML = text.split('').map((char, index) => {
+                        const style = `transition-delay: ${index * 0.05}s`;
+                        return `<span style="${style}">${char === ' ' ? '&nbsp;' : char}</span>`;
+                    }).join('');
+                }
+
+                if (input && input.value) group.classList.add('filled');
+
+                if (input) {
+                    input.addEventListener('focus', () => group.classList.add('active'));
+                    input.addEventListener('blur', () => {
+                        group.classList.remove('active');
+                        input.value ? group.classList.add('filled') : group.classList.remove('filled');
+                    });
+                    input.addEventListener('change', () => {
+                        input.value ? group.classList.add('filled') : group.classList.remove('filled');
+                    });
+                    input.addEventListener('input', () => {
+                        if (input.value) group.classList.add('filled');
+                    });
+                }
+            });
+
+            // --- Multi-step Form Logic ---
+            const step1 = document.getElementById('step-1');
+            const step2 = document.getElementById('step-2');
+            const nextBtn = document.getElementById('nextBtn');
+            const backBtn = document.getElementById('backBtn');
+            const reservationForm = document.getElementById('reservationForm');
+            const reservationSection = document.querySelector('.reservation-section'); // New selection
+            const currentStepSpan = document.getElementById('currentStep');
+
+            nextBtn.addEventListener('click', () => {
+                // Validate Step 1 inputs only
+                const step1Inputs = step1.querySelectorAll('input, select, textarea');
+                let isValid = true;
+
+                for (const input of step1Inputs) {
+                    if (!input.reportValidity()) {
+                        isValid = false;
+                        break;
+                    }
+                }
+
+                if (isValid) {
+                    goToStep(2);
+                }
+            });
+
+            backBtn.addEventListener('click', () => {
+                goToStep(1);
+            });
+
+            function goToStep(step) {
+                // Update Step Visibility
+                if (step === 1) {
+                    step1.classList.remove('hidden');
+                    step1.classList.add('active');
+
+                    step2.classList.remove('active');
+                    setTimeout(() => {
+                        if (!step2.classList.contains('active')) step2.classList.add('hidden');
+                    }, 400); // match animation duration
+
+                    // Remove wide view
+                    reservationSection.classList.remove('wide-view');
+                } else {
+                    step2.classList.remove('hidden');
+                    // small delay to allow display block before opacity transition could be added here if needed for pure css transition
+                    // but sticking to simple toggle for now
+                    step2.classList.add('active');
+
+                    step1.classList.remove('active');
+                    step1.classList.add('hidden');
+
+                    // Add wide view
+                    reservationSection.classList.add('wide-view');
+
+                    // Render Calendar if needed (initial render)
+                    renderCalendar(currentMonth, currentYear);
+                }
+
+                // Update Indicator
+                currentStepSpan.textContent = step;
+
+                // Scroll to top of form
+                reservationForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            // --- Custom Calendar Logic ---
+            const monthNames = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+            let currentDate = new Date();
+            let currentMonth = currentDate.getMonth();
+            let currentYear = currentDate.getFullYear();
+
+            const calendarMonthYear = document.getElementById('calendarMonthYear');
+            const calendarGrid = document.getElementById('calendarGrid');
+            const prevMonthBtn = document.getElementById('prevMonth');
+            const nextMonthBtn = document.getElementById('nextMonth');
+            const selectedDateInput = document.getElementById('selectedDate');
+
+            function renderCalendar(month, year) {
+                // First day of the month (0 = Sunday, 1 = Monday, etc.)
+                let firstDay = new Date(year, month).getDay();
+                // Adjust for Monday start (French format) -> 0 = Mon, 6 = Sun
+                firstDay = firstDay === 0 ? 6 : firstDay - 1;
+
+                const daysInMonth = 32 - new Date(year, month, 32).getDate();
+
+                calendarMonthYear.textContent = `${monthNames[month]} ${year}`;
+
+                // Clear existing days (keep headers)
+                // We actually remove all DIVs after the headers. Headers are 7 items.
+                // Simpler: clear all and re-add headers? Or target specific children. 
+                // Let's just remove all children and re-add headers + days to be safe and clean.
+                calendarGrid.innerHTML = `
+                    <div class="calendar-day-name">Lun</div>
+                    <div class="calendar-day-name">Mar</div>
+                    <div class="calendar-day-name">Mer</div>
+                    <div class="calendar-day-name">Jeu</div>
+                    <div class="calendar-day-name">Ven</div>
+                    <div class="calendar-day-name">Sam</div>
+                    <div class="calendar-day-name">Dim</div>
+                `;
+
+                // Empty cells for days before the 1st
+                for (let i = 0; i < firstDay; i++) {
+                    const emptyCell = document.createElement('div');
+                    emptyCell.classList.add('calendar-day', 'empty');
+                    calendarGrid.appendChild(emptyCell);
+                }
+
+                // Days
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayCell = document.createElement('div');
+                    dayCell.classList.add('calendar-day');
+                    dayCell.textContent = day;
+
+                    // Check if date is in the past
+                    const checkDate = new Date(year, month, day);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+
+                    if (checkDate < today) {
+                        dayCell.classList.add('disabled');
+                    } else if (checkDate.getDay() === 1) { // Lundi fermé logic from context (implied)
+                        // Wait, in previous file content: "Lundi Fermé". 
+                        // new Date().getDay() -> 1 is Monday.
+                        // So if checkDate.getDay() === 1, it is Monday. Disable it.
+                        dayCell.classList.add('disabled');
+                        dayCell.title = "Fermé le lundi";
+                    } else {
+                        dayCell.addEventListener('click', () => {
+                            // Selection logic
+                            document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+                            dayCell.classList.add('selected');
+
+                            // Format value properly YYYY-MM-DD
+                            const correctMonth = month + 1;
+                            const formattedDate = `${year}-${correctMonth.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+                            selectedDateInput.value = formattedDate;
+                        });
+                    }
+
+                    calendarGrid.appendChild(dayCell);
+                }
+            }
+
+            // Init
+            renderCalendar(currentMonth, currentYear);
+
+            prevMonthBtn.addEventListener('click', () => {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                renderCalendar(currentMonth, currentYear);
+            });
+
+            nextMonthBtn.addEventListener('click', () => {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                renderCalendar(currentMonth, currentYear);
+            });
+            // --- New Custom Selectors Logic ---
+
+            // Time Slots
+            const timeButtons = document.querySelectorAll('.time-slot-btn');
+            const timeInput = document.getElementById('time');
+
+            timeButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove selected class from all
+                    timeButtons.forEach(b => b.classList.remove('selected'));
+                    // Add to clicked
+                    btn.classList.add('selected');
+                    // Update hidden input
+                    timeInput.value = btn.dataset.value;
+                });
+            });
+
+            // Guest Counter
+            const guestMinus = document.getElementById('guestMinus');
+            const guestPlus = document.getElementById('guestPlus');
+            const guestInput = document.getElementById('guests');
+            const guestDisplay = document.getElementById('guestCountDisplay');
+
+            guestMinus.addEventListener('click', () => {
+                let current = parseInt(guestInput.value);
+                if (current > 1) {
+                    current--;
+                    guestInput.value = current;
+                    guestDisplay.textContent = current;
+                }
+            });
+
+            guestPlus.addEventListener('click', () => {
+                let current = parseInt(guestInput.value);
+                if (current < 12) { // Max limit
+                    current++;
+                    guestInput.value = current;
+                    guestDisplay.textContent = current;
+                }
+            });
+
+            // --- Success Message Logic ---
+            // --- Success Message Logic ---
+            // Replaced submit listener with direct click listener to prevent issues
+            const confirmBtn = document.getElementById('confirmBtn');
+
+            confirmBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Manual Validation of Step 2
+                // (Step 1 is already validated before reaching here)
+                const date = document.getElementById('selectedDate').value;
+                const time = document.getElementById('time').value;
+                const guests = document.getElementById('guests').value;
+
+                if (!date) {
+                    alert("Veuillez sélectionner une date.");
+                    return;
+                }
+                if (!time) {
+                    alert("Veuillez sélectionner une heure.");
+                    return;
+                }
+
+                // Simulate sending
+                const originalText = confirmBtn.textContent;
+                confirmBtn.textContent = "Envoi...";
+                confirmBtn.disabled = true;
+
+                setTimeout(() => {
+                    // Hide Form
+                    reservationForm.style.display = 'none';
+                    // Show Success
+                    document.getElementById('successMessage').classList.add('active');
+                    // Also ensure section is compact if it was wide
+                    reservationSection.classList.remove('wide-view');
+
+                    // Reset Logic
+                    confirmBtn.textContent = originalText;
+                    confirmBtn.disabled = false;
+                    reservationForm.reset();
+                    goToStep(1); // Reset internal state to step 1
+                }, 1000);
+            });
+
+            document.getElementById('successClose').addEventListener('click', () => {
+                document.getElementById('successMessage').classList.remove('active');
+                reservationForm.style.display = 'block';
+            });
+
+        });
+    </script>
 </body>
 
 </html>

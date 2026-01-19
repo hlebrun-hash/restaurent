@@ -23,8 +23,24 @@
 .lieu-image img,
 .lieu-map iframe {
     width: 100%;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
+    border-radius: 0;
+    box-shadow: none;
+    border: 1px solid var(--color-dark);
+}
+
+.lieu-image-wrapper {
+    position: relative;
+    padding: 10px;
+    background: white;
+    border: 1px solid var(--color-dark-10);
+}
+
+.lieu-image-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: -15px;
+    border: 1px solid var(--color-orange);
+    z-index: -1;
 }
 
 .lieu-distances {
@@ -36,13 +52,13 @@
     align-items: center;
     gap: var(--space-md);
     padding: var(--space-sm) 0;
-    border-bottom: 1px solid var(--color-bordeaux-10);
+    border-bottom: 1px solid var(--color-dark-10);
 }
 
 .lieu-distances li strong {
     font-family: var(--font-heading);
     font-size: var(--text-2xl);
-    color: var(--color-bordeaux);
+    color: var(--color-orange);
     min-width: 80px;
 }
 
@@ -51,32 +67,34 @@
     align-items: center;
     gap: var(--space-sm);
     padding: var(--space-md);
-    background: var(--color-bordeaux-10);
-    border-radius: var(--radius-md);
+    background: var(--color-orange-10);
+    border-radius: 0;
+    border: 1px solid var(--color-orange-20);
     margin: var(--space-md) 0 var(--space-lg);
 }
 
 .lieu-parking svg {
-    color: var(--color-bordeaux);
+    color: var(--color-orange);
 }
 
 /* Galerie Lieu */
 .section--lieu-galerie {
-    background: linear-gradient(180deg, var(--color-cream) 0%, #EDE8DF 100%);
+    background: var(--color-bg);
 }
 
 .lieu-galerie {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 200px);
+    grid-template-rows: repeat(2, 220px);
     gap: var(--space-md);
 }
 
 .lieu-galerie__item {
     position: relative;
-    border-radius: var(--radius-lg);
+    border-radius: 0;
     overflow: hidden;
     margin: 0;
+    border: 1px solid var(--color-dark);
 }
 
 .lieu-galerie__item--wide {
@@ -95,7 +113,7 @@
 }
 
 .lieu-galerie__item:hover img {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .lieu-galerie__item figcaption {
@@ -104,8 +122,8 @@
     left: 0;
     right: 0;
     padding: var(--space-md);
-    background: linear-gradient(transparent, var(--color-dark-80));
-    color: var(--color-cream);
+    background: rgba(45, 42, 38, 0.8);
+    color: var(--color-white);
     font-size: var(--text-sm);
     opacity: 0;
     transition: opacity var(--transition-base);
@@ -131,7 +149,8 @@
     text-align: center;
     padding: var(--space-xl);
     background: white;
-    border-radius: var(--radius-lg);
+    border-radius: 0;
+    border: 1px solid var(--color-dark-10);
     box-shadow: var(--shadow-sm);
     transition: all var(--transition-base);
 }
@@ -139,6 +158,7 @@
 .patio-feature:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-md);
+    border-color: var(--color-orange);
 }
 
 .patio-feature__icon {
@@ -154,12 +174,12 @@
 
 .patio-feature__text {
     font-size: var(--text-sm);
-    color: var(--color-dark-60);
+    color: var(--color-gray);
 }
 
 /* Tapas Menu */
 .section--tapas-menu {
-    background: var(--color-bordeaux-10);
+    background: var(--color-bg-light);
 }
 
 .tapas-header {
@@ -178,7 +198,8 @@
 .tapas-item {
     padding: var(--space-lg);
     background: white;
-    border-radius: var(--radius-md);
+    border-radius: 0;
+    border: 1px solid var(--color-dark-10);
     text-align: center;
     transition: all var(--transition-base);
 }
@@ -186,6 +207,7 @@
 .tapas-item:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-sm);
+    border-color: var(--color-orange);
 }
 
 .tapas-item__name {
@@ -196,22 +218,25 @@
 
 .tapas-item__desc {
     font-size: var(--text-sm);
-    color: var(--color-dark-60);
+    color: var(--color-gray);
     margin-bottom: var(--space-sm);
 }
 
 .tapas-item__price {
-    font-family: var(--font-heading);
+    font-family: var(--font-body);
+    /* Satoshi */
     font-size: var(--text-xl);
-    font-weight: 600;
-    color: var(--color-bordeaux);
+    font-weight: 700;
+    /* Satoshi Bold */
+    color: var(--color-orange);
 }
 
 /* Cocktails */
 .cocktails-section {
-    background: var(--color-bordeaux);
+    background: var(--color-dark);
     padding: var(--space-xl);
-    border-radius: var(--radius-xl);
+    border-radius: 0;
+    border-left: 5px solid var(--color-orange);
     max-width: 900px;
     margin: 0 auto;
 }
@@ -219,7 +244,7 @@
 .cocktails-title {
     font-family: var(--font-heading);
     font-size: var(--text-2xl);
-    color: var(--color-cream);
+    color: var(--color-white);
     text-align: center;
     margin-bottom: var(--space-lg);
 }
@@ -232,29 +257,32 @@
 
 .cocktail {
     padding: var(--space-md);
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0;
 }
 
 .cocktail__name {
     display: block;
     font-family: var(--font-heading);
     font-size: var(--text-lg);
-    color: var(--color-gold);
+    color: var(--color-orange);
     margin-bottom: var(--space-xs);
 }
 
 .cocktail__desc {
     display: block;
     font-size: var(--text-sm);
-    color: var(--color-cream-90);
+    color: var(--color-gray-light);
     margin-bottom: var(--space-xs);
 }
 
 .cocktail__price {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    color: var(--color-cream);
+    font-family: var(--font-body);
+    /* Satoshi */
+    font-weight: 700;
+    /* Satoshi Bold */
+    color: var(--color-white);
 }
 
 /* Patio Horaires */
@@ -270,7 +298,8 @@
 .patio-info__card {
     padding: var(--space-xl);
     background: white;
-    border-radius: var(--radius-lg);
+    border-radius: 0;
+    border: 1px solid var(--color-dark-10);
     box-shadow: var(--shadow-sm);
 }
 
@@ -282,11 +311,12 @@
 
 .patio-info__card li {
     padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--color-dark-10);
 }
 
 .patio-info__note {
     font-size: var(--text-xs);
-    color: var(--color-dark-60);
+    color: var(--color-gray);
     margin-top: var(--space-md);
 }
 
@@ -318,9 +348,10 @@
     gap: var(--space-xl);
     align-items: center;
     background: white;
-    border-radius: var(--radius-xl);
+    border-radius: 0;
+    border: 1px solid var(--color-dark-10);
     overflow: hidden;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-sm);
 }
 
 .espace-card:nth-child(even) {
@@ -349,7 +380,7 @@
 }
 
 .espace-card__desc {
-    color: var(--color-dark-80);
+    color: var(--color-gray);
     margin-bottom: var(--space-lg);
 }
 
@@ -363,16 +394,17 @@
     display: flex;
     align-items: center;
     gap: var(--space-sm);
+    font-size: var(--text-sm);
 }
 
 .espace-card__features svg {
-    color: var(--color-gold);
+    color: var(--color-orange);
     flex-shrink: 0;
 }
 
 /* Event Types */
 .event-types {
-    background: var(--color-cream);
+    background: var(--color-bg);
 }
 
 .event-types-header {
@@ -392,7 +424,8 @@
     text-align: center;
     padding: var(--space-xl);
     background: white;
-    border-radius: var(--radius-lg);
+    border-radius: 0;
+    border: 1px solid var(--color-dark-10);
     box-shadow: var(--shadow-sm);
     transition: all var(--transition-base);
 }
@@ -400,6 +433,7 @@
 .event-type:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-md);
+    border-color: var(--color-orange);
 }
 
 .event-type__icon {
@@ -415,12 +449,12 @@
 
 .event-type__desc {
     font-size: var(--text-sm);
-    color: var(--color-dark-60);
+    color: var(--color-gray);
 }
 
 /* Devis Form */
 .event-devis {
-    background: linear-gradient(180deg, var(--color-cream) 0%, #EDE8DF 100%);
+    background: var(--color-bg-light);
 }
 
 .devis-wrapper {
@@ -433,12 +467,12 @@
 .devis-contact {
     margin-top: var(--space-xl);
     padding-top: var(--space-lg);
-    border-top: 1px solid var(--color-bordeaux-10);
+    border-top: 1px solid var(--color-dark-10);
 }
 
 .devis-contact p {
     font-size: var(--text-sm);
-    color: var(--color-dark-60);
+    color: var(--color-gray);
     margin-bottom: var(--space-sm);
 }
 
@@ -448,13 +482,24 @@
     gap: var(--space-sm);
     font-family: var(--font-heading);
     font-size: var(--text-xl);
-    color: var(--color-bordeaux);
+    color: var(--color-orange);
     margin-bottom: var(--space-sm);
 }
 
 .devis-form {
     background: white;
     padding: var(--space-xl);
-    border-radius: var(--radius-xl);
+    border-radius: 0;
+    border: 1px solid var(--color-dark-10);
     box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 992px) {
+    .devis-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .patio-info {
+        grid-template-columns: 1fr;
+    }
 }

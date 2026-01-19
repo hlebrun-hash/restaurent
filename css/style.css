@@ -1,9 +1,7 @@
 /* =====================================================
    AU PETIT CHEZ SOI - DESIGN SYSTEM
-   Palette: Crème, Bordeaux, Doré, Texte sombre
-   Typo: Playfair Display + Lato
+   Typo: Gambetta + Satoshi
    ===================================================== */
-
 /* Imports au début du fichier */
 @import url('components.css');
 @import url('sections.css');
@@ -12,24 +10,56 @@
 
 /* ==================== CSS VARIABLES ==================== */
 :root {
-    /* Couleurs principales (4 couleurs max) */
-    --color-cream: #F5F0E8;
-    --color-bordeaux: #722F37;
-    --color-gold: #C9A962;
-    --color-dark: #2C2420;
+    /* Couleurs principales - Nouvelle Sémantique */
+    --color-bg: #FAF7F2;
+    /* Crème / Blanc cassé */
+    --color-bg-light: #FDFBF8;
+    /* Variation plus claire */
+
+    --color-primary: #5D2A2C;
+    /* Bordeaux Profond - Terre de Sienne (Texte riche, boutons) */
+    --color-primary-light: #7A3E40;
+
+    --color-accent: #B59451;
+    /* Doré Patiné - Prestige */
+    --color-accent-light: #D4B675;
+
+    /* Legacy mapping pour compatibilité (on redéfinit l'orange comme le doré ou le bordeaux selon l'usage) */
+    --color-orange: #5D2A2C;
+    /* On map l'ancien orange "Action" vers le Bordeaux pour les boutons principaux */
+    --color-orange-light: #B59451;
+    /* On map le light vers le doré */
+    --color-orange-dark: #3E1A1C;
+
+    --color-gold: #B59451;
+    /* Alias explicite */
+
+    --color-dark: #2D2A26;
+    /* Charbon chaud (Textes) */
+    --color-gray: #6B6560;
+    /* Taupe foncé */
+    --color-gray-light: #A39E97;
+    /* Taupe clair */
+    --color-white: #FFFFFF;
 
     /* Variations via opacité */
-    --color-cream-90: rgba(245, 240, 232, 0.9);
-    --color-cream-50: rgba(245, 240, 232, 0.5);
-    --color-bordeaux-80: rgba(114, 47, 55, 0.8);
-    --color-bordeaux-10: rgba(114, 47, 55, 0.1);
-    --color-gold-60: rgba(201, 169, 98, 0.6);
-    --color-dark-80: rgba(44, 36, 32, 0.8);
-    --color-dark-60: rgba(44, 36, 32, 0.6);
+    --color-bg-90: rgba(250, 247, 242, 0.95);
+    --color-bg-50: rgba(250, 247, 242, 0.6);
+
+    --color-primary-20: rgba(93, 42, 44, 0.2);
+    --color-accent-20: rgba(181, 148, 81, 0.2);
+
+    --color-orange-20: rgba(181, 148, 81, 0.25);
+    /* Mapping texture */
+    --color-orange-10: rgba(181, 148, 81, 0.15);
+
+    --color-dark-80: rgba(45, 42, 38, 0.85);
+    --color-dark-60: rgba(45, 42, 38, 0.65);
+    --color-dark-10: rgba(45, 42, 38, 0.08);
 
     /* Typographie */
-    --font-heading: 'Playfair Display', Georgia, serif;
-    --font-body: 'Lato', 'Segoe UI', sans-serif;
+    --font-heading: 'Gambetta', Georgia, serif;
+    --font-body: 'Satoshi', 'Segoe UI', sans-serif;
 
     /* Tailles */
     --text-xs: 0.75rem;
@@ -52,18 +82,23 @@
     --space-2xl: 5rem;
     --space-3xl: 8rem;
 
-    /* Bordures & Rayons */
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
-    --radius-full: 9999px;
+    /* Bordures & Rayons - TOUT CARRÉ */
+    --radius-sm: 0px;
+    --radius-md: 0px;
+    --radius-lg: 0px;
+    --radius-xl: 0px;
+    --radius-full: 0px;
 
     /* Ombres */
-    --shadow-sm: 0 2px 8px rgba(44, 36, 32, 0.08);
-    --shadow-md: 0 4px 20px rgba(44, 36, 32, 0.12);
-    --shadow-lg: 0 8px 40px rgba(44, 36, 32, 0.16);
-    --shadow-glow: 0 0 30px rgba(201, 169, 98, 0.3);
+    /* Ombres - Tons chauds */
+    --shadow-sm: 0 2px 8px rgba(93, 42, 44, 0.05);
+    /* Bordeaux très léger */
+    --shadow-md: 0 4px 20px rgba(45, 42, 38, 0.08);
+    --shadow-lg: 0 12px 48px rgba(45, 42, 38, 0.12);
+    --shadow-card: 0 10px 30px rgba(45, 42, 38, 0.06);
+
+    --shadow-orange: 0 8px 30px rgba(181, 148, 81, 0.25);
+    /* Ombre dorée maintenant */
 
     /* Transitions */
     --transition-fast: 0.2s ease;
@@ -97,24 +132,40 @@ body {
     font-weight: 400;
     line-height: 1.7;
     color: var(--color-dark);
-    background-color: var(--color-cream);
+    background-color: var(--color-bg);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    /* Texture subtile 'Papier/Pierre' */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
 }
 
-/* Texture grain subtile sur body */
+/* Éléments décoratifs circulaires subtils */
 body::before {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: -200px;
+    right: -200px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--color-orange-10) 0%, transparent 70%);
+    border-radius: 50%;
     pointer-events: none;
-    opacity: 0.03;
-    z-index: 9999;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    z-index: -1;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -150px;
+    left: -150px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--color-orange-10) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
 }
 
 img {
@@ -149,7 +200,8 @@ h4,
 h5,
 h6 {
     font-family: var(--font-heading);
-    font-weight: 500;
+    font-weight: 700;
+    /* Gambetta Bold par défaut pour les titres */
     line-height: 1.2;
     color: var(--color-dark);
 }
@@ -173,8 +225,12 @@ h4 {
 h1 em,
 h2 em,
 h3 em {
+    font-family: var(--font-heading);
     font-style: italic;
-    color: var(--color-bordeaux);
+    font-weight: 700;
+    font-weight: 700;
+    color: var(--color-accent);
+    /* Doré pour l'emphase élégante */
 }
 
 p {
@@ -188,9 +244,9 @@ strong {
 /* ==================== LAYOUT ==================== */
 .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 0 var(--space-md);
+    padding: 0 var(--space-lg);
 }
 
 .section {
@@ -199,14 +255,29 @@ strong {
 }
 
 .section__label {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
     font-family: var(--font-body);
     font-size: var(--text-sm);
     font-weight: 500;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--color-gold);
+    color: var(--color-primary);
+    /* Bordeaux pour les labels */
     margin-bottom: var(--space-sm);
+}
+
+.section__label::before {
+    content: '';
+    height: 1px;
+    /* Ligne fine au lieu de point */
+    width: 20px;
+    background: var(--color-accent);
+    /* Trait doré */
+    border-radius: 0;
 }
 
 .section__title {
@@ -219,12 +290,133 @@ strong {
 
 .section__text {
     font-size: var(--text-lg);
-    color: var(--color-dark-80);
+    color: var(--color-gray);
     max-width: 600px;
+    line-height: 1.8;
 }
 
 .section__text--center {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* ==================== DECORATIVE ELEMENTS ==================== */
+.deco-dots {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-image: radial-gradient(var(--color-orange-20) 2px, transparent 2px);
+    background-size: 12px 12px;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.deco-circle {
+    position: absolute;
+    border: 2px dashed var(--color-orange-20);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.animate-fade-in-up {
+    animation: slideInUp 0.8s ease forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.delay-3 {
+    animation-delay: 0.6s;
+}
+
+/* Reveal animations on scroll */
+.reveal-up,
+.reveal-left,
+.reveal-right,
+.reveal-scale {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-up {
+    transform: translateY(40px);
+}
+
+.reveal-left {
+    transform: translateX(-40px);
+}
+
+.reveal-right {
+    transform: translateX(40px);
+}
+
+.reveal-scale {
+    transform: scale(0.95);
+}
+
+.reveal-up.revealed,
+.reveal-left.revealed,
+.reveal-right.revealed,
+.reveal-scale.revealed {
+    opacity: 1;
+    transform: translate(0) scale(1);
 }
