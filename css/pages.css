@@ -186,7 +186,8 @@
 .menu-item__price {
     font-family: var(--font-body);
     /* Satoshi */
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
+    /* Reduced from xl to lg */
     font-weight: 700;
     /* Satoshi Bold */
     color: var(--color-orange);
@@ -233,6 +234,11 @@
     margin: 0 auto;
 }
 
+.formules-grid--2-cols {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 650px;
+}
+
 .formule {
     padding: var(--space-xl);
     background: white;
@@ -268,7 +274,10 @@
 
 .formule__name {
     font-family: var(--font-heading);
-    font-size: var(--text-lg);
+    font-size: var(--text-2xl);
+    /* Increased from lg */
+    font-weight: 700;
+    /* Added weight */
     color: var(--color-dark);
 }
 
@@ -319,7 +328,9 @@
         grid-template-columns: 1fr;
     }
 
-    .formules-grid {
+    .formules-grid,
+    .formules-grid--2-cols {
+        /* Fix responsive override */
         grid-template-columns: 1fr;
     }
 
@@ -482,24 +493,108 @@
 }
 
 .filter-btn {
-    padding: 0.5rem 1.5rem;
+    padding: 0.75rem 1.75rem;
     background: transparent;
-    border: 1px solid var(--color-dark);
+    border: 1px solid rgba(45, 42, 38, 0.2);
     color: var(--color-dark);
-    font-family: var(--font-body);
-    font-size: 1rem;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
     font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
     cursor: pointer;
     transition: all 0.3s ease;
-    border-radius: 50px;
-    /* Pill shape */
+    border-radius: 2px;
+    /* Slight rounding for elegance */
+    position: relative;
+    overflow: hidden;
 }
 
-.filter-btn:hover,
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--color-orange);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.filter-btn:hover {
+    border-color: var(--color-orange);
+    color: var(--color-orange);
+}
+
 .filter-btn.active {
     background: var(--color-orange);
     border-color: var(--color-orange);
     color: white;
+    box-shadow: 0 5px 15px rgba(230, 81, 0, 0.2);
+}
+
+.filter-btn.active:hover {
+    color: white;
+    /* Maintain white text on hover when active */
+}
+
+/* Carousel Styles */
+.carousel-nav {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-only {
+        display: flex;
+    }
+
+    .carousel-nav {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+        align-items: center;
+    }
+
+    .carousel-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: white;
+        border: 1px solid var(--color-dark-10);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: var(--color-dark);
+        transition: all 0.2s;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .carousel-btn:hover {
+        background: var(--color-dark);
+        color: white;
+        border-color: var(--color-dark);
+    }
+
+    /* Hide all formulas by default on mobile except active */
+    .formules-grid {
+        display: flex;
+        flex-direction: column;
+        min-height: 250px;
+        /* Adjust based on content */
+    }
+
+    .formule {
+        display: none;
+        width: 100%;
+        animation: fadeIn 0.4s ease;
+    }
+
+    .formule.active {
+        display: block;
+    }
 }
 
 /* ==================== IMPORTS ==================== */

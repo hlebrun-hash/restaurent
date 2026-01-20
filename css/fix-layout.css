@@ -1,0 +1,69 @@
+/* Temporary fix to force 2 columns structure */
+.formules-grid--2-cols {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    max-width: 700px !important;
+    margin: 0 auto !important;
+    gap: 2rem !important;
+}
+
+@media (max-width: 768px) {
+    .formules-grid--2-cols {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Separator style */
+.menu-separator {
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-orange);
+    margin: 3rem auto;
+    opacity: 0.4;
+    border-radius: 2px;
+}
+
+/* Long price fix */
+.menu-item__price--long {
+    display: block !important;
+    width: 100% !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    margin-top: 0.5rem !important;
+    line-height: 1.4 !important;
+    opacity: 0.9;
+    text-align: right;
+    color: var(--color-orange) !important;
+}
+
+/* Price Break Utility */
+.price-break {
+    flex-basis: 100%;
+    text-align: left;
+    /* Aligned left for better readability on long lines */
+    margin-top: 0.25rem;
+    width: 100%;
+}
+
+/* Consolidated Price Row Styling */
+.menu-item__price-row {
+    display: block;
+    width: 100%;
+    text-align: right;
+    font-family: var(--font-body) !important;
+    font-weight: 900 !important;
+    /* Extra Bold / Black */
+    font-size: 1.125rem !important;
+    /* Hardcoded 18px to match var(--text-lg) */
+    color: var(--color-orange) !important;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+}
+
+/* Ensure other prices match this boldness */
+.menu-item__price,
+.formule__price {
+    font-family: var(--font-body) !important;
+    font-weight: 900 !important;
+}

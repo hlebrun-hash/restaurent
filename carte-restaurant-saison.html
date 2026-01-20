@@ -15,8 +15,9 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/pages.css?v=16">
     <link rel="stylesheet" href="css/dish-modal.css">
+    <link rel="stylesheet" href="css/fix-layout.css">
 </head>
 
 <body>
@@ -35,9 +36,7 @@
                 <li><a href="contact-reservation.html" class="nav__link">Contact</a></li>
             </ul>
 
-            <div class="nav__actions">
-                <a href="contact-reservation.html" class="nav__cta btn btn--primary">Réserver une Table</a>
-            </div>
+
 
             <button class="nav__toggle" id="navToggle" aria-label="Menu">
                 <span></span><span></span><span></span>
@@ -70,6 +69,7 @@
                 <button class="filter-btn" data-filter="formules">Formules</button>
                 <button class="filter-btn" data-filter="entrees">Entrées</button>
                 <button class="filter-btn" data-filter="plats">Plats</button>
+                <button class="filter-btn" data-filter="enfants">Enfants</button>
                 <button class="filter-btn" data-filter="desserts">Desserts</button>
             </div>
 
@@ -105,10 +105,26 @@
                         <span class="formule__info">Menu complet</span>
                     </article>
                 </div>
+                <div class="carousel-nav mobile-only">
+                    <button class="carousel-btn prev" aria-label="Menu précédent">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M15 18l-6-6 6-6" />
+                        </svg>
+                    </button>
+                    <button class="carousel-btn next" aria-label="Menu suivant">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M9 18l6-6-6-6" />
+                        </svg>
+                    </button>
+                </div>
             </section>
 
+            <div class="menu-separator reveal-up"></div>
+
             <section class="menu-formules reveal-up" data-category="formules">
-                <h2 class="menu-formules__title">Menu du P'tit Chess</h2>
+                <h2 class="menu-formules__title">Menu du P'tit Chess & Enfants</h2>
                 <p class="menu-category__subtitle"
                     style="text-align: center; margin-bottom: 2rem; color: var(--color-dark-60);">Sauf dimanche et jours
                     fériés</p>
@@ -123,14 +139,49 @@
                         <span class="formule__price">38€</span>
                         <p class="formule__description">Entrée + Plat + Dessert</p>
                     </article>
+                    <article class="formule">
+                        <span class="formule__name">Menu Enfant</span>
+                        <span class="formule__price">15€</span>
+                        <p class="formule__description">
+                            Sirop, diabolo ou jus<br>
+                            Steak haché ou Poulet<br>
+                            Frites, purée ou pâtes<br>
+                            1 boule de glace
+                        </p>
+                    </article>
                 </div>
+                <div class="carousel-nav mobile-only">
+                    <button class="carousel-btn prev" aria-label="Menu précédent">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M15 18l-6-6 6-6" />
+                        </svg>
+                    </button>
+                    <button class="carousel-btn next" aria-label="Menu suivant">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M9 18l6-6-6-6" />
+                        </svg>
+                    </button>
+                </div>
+
                 <div class="menu-supplements"
                     style="text-align: center; margin-top: 2rem; font-size: 0.9em; color: var(--color-dark-80); max-width: 800px; margin-left: auto; margin-right: auto;">
-                    <p><strong>Choix Entrées :</strong> Os à moelle, Terrine maison, Soupe à l’oignon, Demi camembert,
+                    <p><strong>Choix Entrées :</strong> <a href="#os-a-moelle" class="scroll-link">Os à moelle</a>, <a
+                            href="#terrine-maison" class="scroll-link">Terrine maison</a>, <a href="#soupe-oignon"
+                            class="scroll-link">Soupe à l’oignon</a>, <a href="#camembert" class="scroll-link">Demi
+                            camembert</a>,
                         Salade maritime</p>
-                    <p><strong>Choix Plats :</strong> Rognons de veau, Pluma de porc, Poire de bœuf, Filet de bar</p>
-                    <p><strong>Choix Desserts :</strong> Charlotte, Mousse chocolat, Café gourmand (+1€), Crème caramel,
-                        Crumble, Baba</p>
+                    <p><strong>Choix Plats :</strong> <a href="#rognons" class="scroll-link">Rognons de veau</a>, <a
+                            href="#pluma" class="scroll-link">Pluma de porc</a>, <a href="#poire-boeuf"
+                            class="scroll-link">Poire de bœuf</a>, <a href="#bar" class="scroll-link">Filet de bar</a>
+                    </p>
+                    <p><strong>Choix Desserts :</strong> <a href="#charlotte" class="scroll-link">Charlotte</a>, <a
+                            href="#mousse-chocolat" class="scroll-link">Mousse chocolat</a>, <a href="#gourmands"
+                            class="scroll-link">Café gourmand (+1€)</a>, <a href="#creme-caramel"
+                            class="scroll-link">Crème caramel</a>,
+                        <a href="#crumble" class="scroll-link">Crumble</a>, <a href="#baba" class="scroll-link">Baba</a>
+                    </p>
                 </div>
             </section>
 
@@ -146,9 +197,10 @@
                                 <span class="menu-item__price">15,50€</span>
                             </div>
                             <p class="menu-item__description">Poêlée de champignons frais</p>
+                            <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
-                    <article class="menu-item">
+                    <article class="menu-item" id="os-a-moelle">
                         <img src="images/os-a-moelle.png" alt="Os à moelle rôti" class="menu-item__img">
                         <div class="menu-item__content">
                             <div class="menu-item__header">
@@ -156,6 +208,7 @@
                                 <span class="menu-item__price">13,50€</span>
                             </div>
                             <p class="menu-item__description">Toasts grillés</p>
+                            <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
                     <article class="menu-item">
@@ -169,13 +222,15 @@
                             <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
-                    <article class="menu-item">
+                    <article class="menu-item" id="terrine-maison">
                         <img src="images/terrine-maison.png" alt="Terrine maison" class="menu-item__img">
                         <div class="menu-item__content">
                             <div class="menu-item__header">
                                 <h3 class="menu-item__name">Terrine maison</h3>
                                 <span class="menu-item__price">8€</span>
                             </div>
+                            <p class="menu-item__description">Compositions de porc et volaille, cornichons</p>
+                            <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
                     <article class="menu-item">
@@ -183,9 +238,13 @@
                         <div class="menu-item__content">
                             <div class="menu-item__header">
                                 <h3 class="menu-item__name">Gros escargots de Bourgogne</h3>
-                                <span class="menu-item__price">6p 10€ / 12p 19€</span>
+                                <span class="menu-item__price price-break" style="text-align: right; line-height: 1.4;">
+                                    6 Pièces 10€<br>
+                                    12 Pièces 19€
+                                </span>
                             </div>
                             <p class="menu-item__description">Label Rouge</p>
+                            <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
                     <article class="menu-item">
@@ -193,11 +252,17 @@
                         <div class="menu-item__content">
                             <div class="menu-item__header">
                                 <h3 class="menu-item__name">Huîtres N°3 Grands Crus en Cotentin</h3>
-                                <span class="menu-item__price">6p 14€ / 9p 21€ / 12p 28€</span>
+                                <span class="menu-item__price price-break" style="text-align: right; line-height: 1.4;">
+                                    6 Pièces 14€<br>
+                                    9 Pièces 21€<br>
+                                    12 Pièces 28€
+                                </span>
                             </div>
+                            <p class="menu-item__description">Vinaigre à l'échalote, pain de seigle, beurre demi-sel</p>
+                            <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
-                    <article class="menu-item">
+                    <article class="menu-item" id="soupe-oignon">
                         <img src="images/soupe-oignon.png" alt="Soupe à l'oignon gratinée" class="menu-item__img">
                         <div class="menu-item__content">
                             <div class="menu-item__header">
@@ -205,15 +270,18 @@
                                 <span class="menu-item__price">9,50€</span>
                             </div>
                             <p class="menu-item__description">Au vieux Cantal</p>
+                            <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
-                    <article class="menu-item">
+                    <article class="menu-item" id="camembert">
                         <img src="images/camembert.png" alt="Demi camembert rôti au miel" class="menu-item__img">
                         <div class="menu-item__content">
                             <div class="menu-item__header">
                                 <h3 class="menu-item__name">Demi camembert rôti au miel</h3>
                                 <span class="menu-item__price">8€</span>
                             </div>
+                            <p class="menu-item__description">Herbes de Provence, pain grillé</p>
+                            <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
                     <article class="menu-item">
@@ -224,6 +292,7 @@
                                 <h3 class="menu-item__name">Chiffonnade de Cebo Ibérique</h3>
                                 <span class="menu-item__price">15€</span>
                             </div>
+                            <p class="menu-item__description">Jambon affiné, servis avec pan con tomate</p>
                         </div>
                     </article>
                 </div>
@@ -254,7 +323,7 @@
             <section class="menu-category reveal-up" data-category="plats">
                 <h2 class="menu-category__title">Nos Poissons</h2>
                 <div class="menu-items">
-                    <article class="menu-item">
+                    <article class="menu-item" id="bar">
                         <img src="images/bar-grille.png" alt="Filet de bar grillé" class="menu-item__img">
                         <div class="menu-item__content">
                             <div class="menu-item__header">
@@ -263,6 +332,7 @@
                             </div>
                             <p class="menu-item__description">Choux fleurs et patates douces rôtis, sauce vierge
                                 (vinaigrette huile de sésame, ail et gingembre)</p>
+                            <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
                     <article class="menu-item">
@@ -273,6 +343,7 @@
                                 <span class="menu-item__price">28€</span>
                             </div>
                             <p class="menu-item__description">Purée de potimarron, pesto aux noix</p>
+                            <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
                 </div>
@@ -294,9 +365,10 @@
                             </div>
                             <p class="menu-item__description">Pain brioché, steak haché (150g), tallegio, comté, sauce
                                 cocktail maison, oignons, tomates, cornichons. Frites maison et mesclun.</p>
+                            <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
-                    <article class="menu-item">
+                    <article class="menu-item" id="poire-boeuf">
                         <img src="images/poire-boeuf.png" alt="Poire de bœuf" class="menu-item__img">
                         <div class="menu-item__content">
                             <div class="menu-item__header">
@@ -305,6 +377,7 @@
                             </div>
                             <p class="menu-item__description">Frites maison et salade mesclun, sauce poivre au cognac
                             </p>
+                            <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
                     <article class="menu-item">
@@ -315,9 +388,10 @@
                                 <span class="menu-item__price">32€</span>
                             </div>
                             <p class="menu-item__description">Sauce au bleu, accompagnement au choix</p>
+                            <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
-                    <article class="menu-item">
+                    <article class="menu-item" id="pluma">
                         <img src="images/pluma-porc.png" alt="Pluma de porc grillée" class="menu-item__img">
                         <div class="menu-item__content">
                             <div class="menu-item__header">
@@ -327,9 +401,10 @@
                             <p class="menu-item__description">Pommes mitrailles provençales, crème moutarde champignons
                                 au
                                 vin blanc</p>
+                            <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
-                    <article class="menu-item">
+                    <article class="menu-item" id="rognons">
                         <img src="images/rognons-veau.png" alt="Rognons de veau" class="menu-item__img">
                         <div class="menu-item__content">
                             <div class="menu-item__header">
@@ -357,24 +432,7 @@
                 </div>
             </section>
 
-            <!-- Pour les Petiots -->
-            <section class="menu-category reveal-up" data-category="enfants">
-                <h2 class="menu-category__title">Pour les Petiots</h2>
-                <div class="menu-items" style="justify-content: center;">
-                    <article class="menu-item" style="max-width: 600px; width: 100%;">
-                        <div class="menu-item__header">
-                            <h3 class="menu-item__name">Menu Enfant</h3>
-                            <span class="menu-item__price">15€</span>
-                        </div>
-                        <p class="menu-item__description">
-                            Sirop, diabolo ou jus de fruits<br>
-                            Steak haché frais ou Aiguillettes de poulet panées<br>
-                            Frites, purée ou pâtes<br>
-                            1 boule de glace au choix
-                        </p>
-                    </article>
-                </div>
-            </section>
+
 
             <!-- Desserts -->
             <section class="menu-category reveal-up" data-category="desserts">
@@ -391,7 +449,7 @@
                                 mesclun</p>
                         </div>
                     </article>
-                    <article class="menu-item">
+                    <article class="menu-item" id="mousse-chocolat">
                         <img src="images/mousse-chocolat.png" alt="Mousse au chocolat" class="menu-item__img">
                         <div class="menu-item__content">
                             <div class="menu-item__header">
@@ -399,57 +457,73 @@
                                 <span class="menu-item__price">9€</span>
                             </div>
                             <p class="menu-item__description">Valrhona Guanaja 70%</p>
+                            <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
-                    <article class="menu-item">
+                    <article class="menu-item" id="baba">
+                        <img src="images/baba-au-rhum.png" alt="Baba au Rhum" class="menu-item__img">
                         <div class="menu-item__content">
                             <div class="menu-item__header">
                                 <h3 class="menu-item__name">Baba au Rhum</h3>
                                 <span class="menu-item__price">9€</span>
                             </div>
                             <p class="menu-item__description">"Toutes les routes mènent au Rhum"</p>
+                            <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
                     <article class="menu-item">
+                        <img src="images/sorbet-maison.png" alt="2 Boules bien arrosées" class="menu-item__img">
                         <div class="menu-item__content">
                             <div class="menu-item__header">
                                 <h3 class="menu-item__name">2 Boules bien arrosées</h3>
-                                <span class="menu-item__price">10€</span>
                             </div>
+                            <span class="menu-item__price-row">10€</span>
                             <p class="menu-item__description">Vodka ou Calvados</p>
                         </div>
                     </article>
-                    <article class="menu-item">
+                    <article class="menu-item" id="creme-caramel">
+                        <img src="images/creme-caramel.png" alt="Crème caramel" class="menu-item__img">
                         <div class="menu-item__content">
                             <div class="menu-item__header">
                                 <h3 class="menu-item__name">Crème caramel</h3>
                                 <span class="menu-item__price">9€</span>
                             </div>
                             <p class="menu-item__description">Palais noisette</p>
+                            <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
-                    <article class="menu-item">
+                    <article class="menu-item" id="crumble">
+                        <img src="images/crumble-pommes.png" alt="Crumble aux pommes" class="menu-item__img">
                         <div class="menu-item__content">
                             <div class="menu-item__header">
                                 <h3 class="menu-item__name">Crumble aux pommes</h3>
                                 <span class="menu-item__price">9€</span>
                             </div>
                             <p class="menu-item__description">Et ses épices, crème fraîche fermière</p>
+                            <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
-                    <article class="menu-item">
+                    <article class="menu-item" id="charlotte">
+                        <img src="images/charlotte-poires.png" alt="Charlotte aux poires" class="menu-item__img">
                         <div class="menu-item__content">
                             <div class="menu-item__header">
                                 <h3 class="menu-item__name">Charlotte aux poires pralinée</h3>
                                 <span class="menu-item__price">9€</span>
                             </div>
+                            <p class="menu-item__description">Biscuit cuillère et mousse légère</p>
+                            <span class="menu-item__tag">Fait Maison</span>
                         </div>
                     </article>
                     <article class="menu-item">
+                        <img src="images/sorbet-maison.png" alt="Sorbet Maison" class="menu-item__img">
                         <div class="menu-item__content">
                             <div class="menu-item__header">
                                 <h3 class="menu-item__name">Sorbet Maison Antolin</h3>
-                                <span class="menu-item__price">1b 3€ / 2b 6€ / 3b 8€</span>
+                                <span class="menu-item__price price-break" style="text-align: right; line-height: 1.4;">
+                                    1 Boule 3€<br>
+                                    2 Boules 6€<br>
+                                    3 Boules 8€
+                                </span>
                             </div>
                             <p class="menu-item__description">Citron basilic, citron vert, cassis, pêche de vigne,
                                 poire,
@@ -457,20 +531,26 @@
                         </div>
                     </article>
                     <article class="menu-item">
+                        <img src="images/sorbet-maison.png" alt="Crème Glacée Maison" class="menu-item__img">
                         <div class="menu-item__content">
                             <div class="menu-item__header">
                                 <h3 class="menu-item__name">Crème Glacée Maison Antolin</h3>
-                                <span class="menu-item__price">1b 3€ / 2b 6€ / 3b 8€</span>
+                                <span class="menu-item__price price-break" style="text-align: right; line-height: 1.4;">
+                                    1 Boule 3€<br>
+                                    2 Boules 6€<br>
+                                    3 Boules 8€
+                                </span>
                             </div>
                             <p class="menu-item__description">Vanille de Madagascar, chocolat noir, café Moka, caramel
                                 beurre salé, fraise, pistache, madeleine, rhum raisin, yaourt</p>
                         </div>
                     </article>
-                    <article class="menu-item">
+                    <article class="menu-item" id="gourmands">
+                        <img src="images/cafe-gourmand.png" alt="Les Gourmands" class="menu-item__img">
                         <div class="menu-item__content">
                             <div class="menu-item__header">
                                 <h3 class="menu-item__name">Les Gourmands</h3>
-                                <span class="menu-item__price">var</span>
+                                <span class="menu-item__price price-break">11,50€</span>
                             </div>
                             <p class="menu-item__description">Café (10€), Thé (12€), Chocolat Chaud (12€), Champagne
                                 (17€),
@@ -530,9 +610,7 @@
         </div>
     </footer>
 
-    <div class="sticky-cta" id="stickyCta">
-        <a href="contact-reservation.html" class="sticky-cta__btn">Réserver une table</a>
-    </div>
+
 
     <script src="js/main.js"></script>
     <script src="js/dish-modal.js"></script>
@@ -552,17 +630,77 @@
                     menuSections.forEach(section => {
                         const category = section.getAttribute('data-category');
 
-                        if (filterValue === 'all') {
-                            section.style.display = 'block';
-                            // Optional: re-trigger animations if you use scroll reveal
-                        } else {
-                            if (category === filterValue) {
+                        // Reset animation
+                        section.style.opacity = '0';
+                        section.style.transform = 'translateY(10px)';
+
+                        setTimeout(() => {
+                            if (filterValue === 'all' || category === filterValue) {
                                 section.style.display = 'block';
+                                // Trigger reflow
+                                void section.offsetWidth;
+                                section.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                                section.style.opacity = '1';
+                                section.style.transform = 'translateY(0)';
                             } else {
                                 section.style.display = 'none';
                             }
-                        }
+                        }, 50); // Small delay for fade out visual (if we wanted to fade out first, but here we just snap hide and fade in)
                     });
+                });
+            });
+
+            // --- Mobile Carousel Logic ---
+            const carouselSections = document.querySelectorAll('.menu-formules');
+
+            carouselSections.forEach(section => {
+                const nav = section.querySelector('.carousel-nav');
+                if (!nav) return;
+
+                const prevBtn = nav.querySelector('.prev');
+                const nextBtn = nav.querySelector('.next');
+                const items = section.querySelectorAll('.formule');
+                let currentIndex = 0;
+
+                // Function to update visibility
+                const updateCarousel = () => {
+                    const supplements = section.querySelector('.menu-supplements');
+
+                    if (window.innerWidth <= 768) {
+                        items.forEach((item, index) => {
+                            const isActive = index === currentIndex;
+                            item.classList.toggle('active', isActive);
+
+                            // Check supplements visibility
+                            if (isActive && supplements) {
+                                const title = item.querySelector('.formule__name')?.textContent || '';
+                                if (title.toLowerCase().includes('enfant')) {
+                                    supplements.style.display = 'none';
+                                } else {
+                                    supplements.style.display = 'block';
+                                }
+                            }
+                        });
+                    } else {
+                        // Reset on desktop
+                        items.forEach(item => item.classList.remove('active'));
+                        if (supplements) supplements.style.display = '';
+                    }
+                };
+
+                // Initialize
+                updateCarousel();
+                window.addEventListener('resize', updateCarousel);
+
+                // Click handlers
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + items.length) % items.length;
+                    updateCarousel();
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % items.length;
+                    updateCarousel();
                 });
             });
         });

@@ -546,11 +546,11 @@
                                 <div class="guest-counter-wrapper">
                                     <button type="button" class="guest-btn" id="guestMinus">-</button>
                                     <div class="guest-display">
-                                        <span class="guest-count-number" id="guestCountDisplay">2</span>
+                                        <input type="number" class="guest-count-input" id="guests" name="guests"
+                                            value="2" min="1" max="20" required>
                                     </div>
                                     <button type="button" class="guest-btn" id="guestPlus">+</button>
                                 </div>
-                                <input type="hidden" id="guests" name="guests" value="2" required>
                             </div>
                         </div>
                     </div>
@@ -841,26 +841,31 @@
             // Guest Counter
             const guestMinus = document.getElementById('guestMinus');
             const guestPlus = document.getElementById('guestPlus');
-            const guestInput = document.getElementById('guests');
-            const guestDisplay = document.getElementById('guestCountDisplay');
+            const guestInput = document.getElementById('guests'); // Direct Input
 
             guestMinus.addEventListener('click', () => {
                 let current = parseInt(guestInput.value);
                 if (current > 1) {
                     current--;
                     guestInput.value = current;
-                    guestDisplay.textContent = current;
                 }
             });
 
             guestPlus.addEventListener('click', () => {
                 let current = parseInt(guestInput.value);
-                if (current < 12) { // Max limit
+                if (current < 20) { // Max limit
                     current++;
                     guestInput.value = current;
-                    guestDisplay.textContent = current;
                 }
             });
+
+            // Allow manual input constraint
+            guestInput.addEventListener('change', () => {
+                let val = parseInt(guestInput.value);
+                if (val < 1) guestInput.value = 1;
+                if (val > 20) guestInput.value = 20;
+            });
+
 
             // --- Success Message Logic ---
             // --- Success Message Logic ---
@@ -890,20 +895,17 @@
                 confirmBtn.textContent = "Envoi...";
                 confirmBtn.disabled = true;
 
-                setTimeout(() => {
-                    // Hide Form
-                    reservationForm.style.display = 'none';
-                    // Show Success
-                    document.getElementById('successMessage').classList.add('active');
-                    // Also ensure section is compact if it was wide
-                    reservationSection.classList.remove('wide-view');
+                // Show Success Immediately
+                reservationForm.style.display = 'none';
+                document.getElementById('successMessage').classList.add('active');
+                reservationSection.classList.remove('wide-view');
+                reservationSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-                    // Reset Logic
-                    confirmBtn.textContent = originalText;
-                    confirmBtn.disabled = false;
-                    reservationForm.reset();
-                    goToStep(1); // Reset internal state to step 1
-                }, 1000);
+                // Reset Logic background
+                confirmBtn.textContent = originalText;
+                confirmBtn.disabled = false;
+                reservationForm.reset();
+                goToStep(1);
             });
 
             document.getElementById('successClose').addEventListener('click', () => {

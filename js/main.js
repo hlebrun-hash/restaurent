@@ -163,5 +163,67 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ==================== MOBILE DISH CAROUSEL ====================
+    const prevBtn = document.querySelector('.section-header__btn[aria-label="Précédent"]');
+    const nextBtn = document.querySelector('.section-header__btn[aria-label="Suivant"]');
+    const dishesContainer = document.querySelector('.dishes__grid');
+
+    if (prevBtn && nextBtn && dishesContainer) {
+        const dishes = dishesContainer.querySelectorAll('.dish-card');
+        let currentIndex = 0;
+
+        // Ensure first item is active initially if on mobile
+        const initCarousel = () => {
+            if (window.innerWidth < 768) {
+                dishes.forEach((dish, index) => {
+                    dish.classList.toggle('active', index === currentIndex);
+                    // Ensure opacity is reset for reveal animation compatibility
+                    if (index === currentIndex) {
+                        dish.style.opacity = '1';
+                        dish.style.transform = 'translateY(0)';
+                    }
+                });
+            } else {
+                // Reset styles for desktop
+                dishes.forEach(dish => {
+                    dish.classList.remove('active');
+                    dish.style.opacity = '';
+                    dish.style.transform = '';
+                });
+            }
+        };
+
+        // Initialize and listen for resize
+        initCarousel();
+        window.addEventListener('resize', initCarousel);
+
+        // Click handlers
+        prevBtn.addEventListener('click', () => {
+            if (window.innerWidth < 768) {
+                currentIndex = (currentIndex - 1 + dishes.length) % dishes.length;
+                initCarousel();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (window.innerWidth < 768) {
+                currentIndex = (currentIndex + 1) % dishes.length;
+                initCarousel();
+            }
+        });
+    }
+
+    // ==================== MOBILE TESTIMONIALS TOGGLE ====================
+    const showMoreTestimonialsBtn = document.getElementById('showMoreTestimonials');
+    if (showMoreTestimonialsBtn) {
+        showMoreTestimonialsBtn.addEventListener('click', () => {
+            const hiddenTestimonials = document.querySelectorAll('.testimonial:nth-child(n+3)');
+            hiddenTestimonials.forEach(testimonial => {
+                testimonial.classList.add('visible-mobile');
+            });
+            showMoreTestimonialsBtn.style.display = 'none';
+        });
+    }
+
     console.log('✨ Au Petit Chez Soi - Site loaded successfully');
 });

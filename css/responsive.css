@@ -199,12 +199,24 @@
     }
 
     .dishes__grid {
-        grid-template-columns: 1fr 1fr;
-        gap: var(--space-md);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 400px;
+        /* Prevent layout shift */
     }
 
     .dish-card {
         padding: var(--space-sm);
+        display: none;
+        /* Hidden by default on mobile for carousel */
+        width: 100%;
+        animation: fadeIn 0.4s ease;
+    }
+
+    .dish-card.active {
+        display: block;
+        /* Visible when active */
     }
 
     .dish-card__image {
@@ -229,18 +241,59 @@
         grid-template-columns: 1fr;
     }
 
+    /* Show only first 2 services on mobile */
+    .services__grid .service-item:nth-child(n+3) {
+        display: none;
+    }
+
     .testimonials__grid {
         grid-template-columns: 1fr;
     }
 
-    .testimonial {
-        padding: var(--space-lg);
+    /* Show only first 2 testimonials on mobile */
+    .testimonial:nth-child(n+3) {
+        display: none;
     }
 
+    /* Show hidden testimonials when active class is present */
+    .testimonial.visible-mobile {
+        display: block !important;
+        animation: fadeIn 0.4s ease;
+    }
+
+    .testimonials__more {
+        display: flex;
+        justify-content: center;
+        margin-top: var(--space-md);
+    }
+
+    /* Mobile CTA Adjustments */
     .cta-final {
         margin: 0;
         border-radius: 0;
-        padding: var(--space-2xl) var(--space-md);
+        padding: var(--space-xl) var(--space-xs);
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .cta-final__content {
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .cta-final__title {
+        font-size: 1.5rem;
+        line-height: 1.2;
+        margin-bottom: var(--space-sm);
+        white-space: normal;
+    }
+
+    .cta-final__text {
+        font-size: var(--text-base);
+        padding: 0;
+        margin-bottom: var(--space-lg);
+        max-width: 100%;
     }
 
     .cta-final__buttons {
@@ -265,6 +318,13 @@
     .footer__legal {
         flex-wrap: wrap;
         justify-content: center;
+    }
+}
+
+/* Hide "See more" button on desktop */
+@media (min-width: 768px) {
+    .testimonials__more {
+        display: none;
     }
 }
 
@@ -306,6 +366,11 @@
 
     .atmosphere__gallery {
         grid-template-columns: 1fr;
+    }
+
+    /* Show only first 2 items in atmosphere gallery on mobile */
+    .atmosphere__gallery .gallery-item:nth-child(n+3) {
+        display: none;
     }
 
     .gallery-item--large {
@@ -370,6 +435,13 @@
 
     .hero__scroll {
         animation: none;
+    }
+}
+
+/* Sticky CTA Compensation */
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 100px;
     }
 }
 

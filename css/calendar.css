@@ -22,7 +22,17 @@
 
 @media (max-width: 768px) {
     .bento-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .bento-card {
+        width: 100%;
+        /* Ensure cards take full width available */
+        box-sizing: border-box;
+        /* Padding doesn't add to width */
     }
 }
 
@@ -68,6 +78,30 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+}
+
+@media (max-width: 480px) {
+    .calendar-header {
+        flex-direction: column-reverse;
+        gap: 1rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .calendar-header-info {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .calendar-dot-separator {
+        display: none;
+    }
+
+    .calendar-nav {
+        width: 100%;
+        justify-content: space-between;
+        padding: 0 1rem;
+    }
 }
 
 .calendar-header-info {
@@ -125,6 +159,16 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 0.5rem;
+}
+
+@media (max-width: 480px) {
+    .calendar-grid {
+        gap: 2px;
+    }
+
+    .calendar-day {
+        font-size: 0.8rem;
+    }
 }
 
 .calendar-day-name {
@@ -243,13 +287,30 @@
     text-align: center;
 }
 
-.guest-count-number {
+.guest-count-input {
     display: block;
+    width: 60px;
+    text-align: center;
     font-family: var(--font-display);
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--color-dark);
     line-height: 1;
+    border: none;
+    background: transparent;
+    padding: 0;
+    -moz-appearance: textfield;
+}
+
+.guest-count-input::-webkit-outer-spin-button,
+.guest-count-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.guest-count-input:focus {
+    outline: none;
+    color: var(--color-orange);
 }
 
 .guest-count-label {
