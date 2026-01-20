@@ -9,16 +9,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
 
-    // Navigation scroll effect
+    // Cache scroll state to avoid repeated reads
+    let lastScrollY = 0;
+    let ticking = false;
+
+    // Navigation scroll effect - optimized with RAF
     const handleNavScroll = () => {
-        if (window.scrollY > 100) {
+        if (lastScrollY > 100) {
             nav.classList.add('scrolled');
         } else {
             nav.classList.remove('scrolled');
         }
+        ticking = false;
     };
 
-    window.addEventListener('scroll', handleNavScroll);
+    const onScroll = () => {
+        lastScrollY = window.scrollY;
+        if (!ticking) {
+            requestAnimationFrame(handleNavScroll);
+            ticking = true;
+        }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    lastScrollY = window.scrollY;
     handleNavScroll(); // Check on load
 
     // Mobile menu toggle
@@ -42,42 +56,57 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==================== REVEAL ON SCROLL ====================
     const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-scale');
 
-    const revealOnScroll = () => {
-        const windowHeight = window.innerHeight;
-        const revealPoint = 150;
+    // Use IntersectionObserver exclusively for reveal - no getBoundingClientRect in scroll handler
+    if ('IntersectionObserver' in window) {
+        const observerOptions = {
+            root: null,
+            rootMargin: '-50px',
+            threshold: 0.1
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
 
         revealElements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-
-            if (elementTop < windowHeight - revealPoint) {
-                element.classList.add('revealed');
-            }
+            revealObserver.observe(element);
         });
-    };
-
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // Check on load
+    } else {
+        // Fallback for old browsers - reveal all immediately
+        revealElements.forEach(element => {
+            element.classList.add('revealed');
+        });
+    }
 
     // ==================== STICKY CTA MOBILE ====================
     const stickyCta = document.getElementById('stickyCta');
     const hero = document.getElementById('hero');
 
-    if (stickyCta && hero) {
-        const handleStickyCta = () => {
-            const heroBottom = hero.getBoundingClientRect().bottom;
+    // Use IntersectionObserver for sticky CTA - no getBoundingClientRect in scroll
+    if (stickyCta && hero && 'IntersectionObserver' in window) {
+        const stickyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // When hero is NOT intersecting (scrolled past), show CTA
+                if (!entry.isIntersecting) {
+                    stickyCta.classList.add('visible');
+                } else {
+                    stickyCta.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0 });
 
-            if (heroBottom < 0) {
-                stickyCta.classList.add('visible');
-            } else {
-                stickyCta.classList.remove('visible');
-            }
-        };
-
-        window.addEventListener('scroll', handleStickyCta);
-        handleStickyCta();
+        stickyObserver.observe(hero);
     }
 
     // ==================== SMOOTH SCROLL ====================
+    // Cache nav height once - it rarely changes
+    let cachedNavHeight = nav ? nav.offsetHeight : 0;
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
@@ -86,8 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
-                const navHeight = nav ? nav.offsetHeight : 0;
-                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                // Read layout only when clicking, not on scroll
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - cachedNavHeight;
 
                 window.scrollTo({
                     top: targetPosition,
@@ -98,15 +127,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==================== GALLERY HOVER EFFECT ====================
+    // Use CSS for this instead of JS where possible, but keep for compatibility
     const galleryItems = document.querySelectorAll('.gallery-item');
 
     galleryItems.forEach(item => {
         item.addEventListener('mouseenter', () => {
-            item.querySelector('img')?.style.setProperty('transform', 'scale(1.1)');
+            const img = item.querySelector('img');
+            if (img) img.style.transform = 'scale(1.1)';
         });
 
         item.addEventListener('mouseleave', () => {
-            item.querySelector('img')?.style.setProperty('transform', 'scale(1)');
+            const img = item.querySelector('img');
+            if (img) img.style.transform = 'scale(1)';
         });
     });
 
@@ -114,10 +146,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroOverlay = document.querySelector('.hero__overlay');
 
     if (heroOverlay) {
+        let parallaxTicking = false;
+
+        const updateParallax = () => {
+            heroOverlay.style.transform = `translateY(${window.pageYOffset * 0.3}px)`;
+            parallaxTicking = false;
+        };
+
         window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            heroOverlay.style.transform = `translateY(${scrolled * 0.3}px)`;
-        });
+            if (!parallaxTicking) {
+                requestAnimationFrame(updateParallax);
+                parallaxTicking = true;
+            }
+        }, { passive: true });
     }
 
     // ==================== CUSTOM CURSOR (optional enhancement) ====================
@@ -140,28 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     */
 
-    // ==================== INTERSECTION OBSERVER FALLBACK ====================
-    // For browsers that support it, use IntersectionObserver for better performance
-    if ('IntersectionObserver' in window) {
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        revealElements.forEach(element => {
-            observer.observe(element);
-        });
-    }
+    // Removed duplicate IntersectionObserver code - already implemented above
 
     // ==================== MOBILE DISH CAROUSEL ====================
     const prevBtn = document.querySelector('.section-header__btn[aria-label="Précédent"]');
@@ -171,6 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (prevBtn && nextBtn && dishesContainer) {
         const dishes = dishesContainer.querySelectorAll('.dish-card');
         let currentIndex = 0;
+        let resizeTimeout;
 
         // Ensure first item is active initially if on mobile
         const initCarousel = () => {
@@ -193,9 +214,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // Initialize and listen for resize
+        // Initialize and listen for resize with debounce
         initCarousel();
-        window.addEventListener('resize', initCarousel);
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(initCarousel, 100);
+        }, { passive: true });
 
         // Click handlers
         prevBtn.addEventListener('click', () => {

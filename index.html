@@ -17,12 +17,157 @@
     <meta property="og:locale" content="fr_FR">
     <link rel="canonical" href="https://aupetitchezsoi.fr/">
 
-    <!-- Fontshare - Gambetta + Satoshi -->
-    <link
-        href="https://api.fontshare.com/v2/css?f[]=gambetta@400,401,500,501,600,601,700,701&f[]=satoshi@400,500,700,900&display=swap"
-        rel="stylesheet">
+    <!-- Preconnect to external origins for faster resource loading -->
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://api.fontshare.com">
+    <link rel="dns-prefetch" href="https://cdn.fontshare.com">
 
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Critical CSS inline for faster FCP -->
+    <style>
+        /* Critical above-the-fold styles inlined for faster render */
+        :root {
+            --color-bg: #FAF7F2;
+            --color-primary: #5D2A2C;
+            --color-accent: #B59451;
+            --color-dark: #2D2A26;
+            --color-gray: #6B6560;
+            --font-heading: 'Gambetta', Georgia, serif;
+            --font-body: 'Satoshi', 'Segoe UI', sans-serif
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.7;
+            color: var(--color-dark);
+            background-color: var(--color-bg);
+            -webkit-font-smoothing: antialiased
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            background: transparent
+        }
+
+        .nav.scrolled {
+            background: rgba(250, 247, 242, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08)
+        }
+
+        .nav__container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem
+        }
+
+        .nav__logo img {
+            height: 50px;
+            width: auto
+        }
+
+        .nav__menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px
+        }
+
+        .hero__container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            align-items: center
+        }
+
+        .hero__title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem
+        }
+
+        .hero__title em {
+            color: var(--color-accent);
+            font-style: italic
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s
+        }
+
+        .btn--primary {
+            background: var(--color-primary);
+            color: #fff
+        }
+
+        @media(max-width:768px) {
+            .nav__menu {
+                display: none
+            }
+
+            .hero__container {
+                grid-template-columns: 1fr
+            }
+
+            .hero__title {
+                font-size: 2rem
+            }
+        }
+    </style>
+
+    <!-- Fontshare - Gambetta + Satoshi (non-blocking with swap) -->
+    <link rel="preload" as="style"
+        href="https://api.fontshare.com/v2/css?f[]=gambetta@400,500,600,700&f[]=satoshi@400,500,700&display=swap">
+    <link href="https://api.fontshare.com/v2/css?f[]=gambetta@400,500,600,700&f[]=satoshi@400,500,700&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://api.fontshare.com/v2/css?f[]=gambetta@400,500,600,700&f[]=satoshi@400,500,700&display=swap"
+            rel="stylesheet">
+    </noscript>
+
+    <!-- Main stylesheet (non-blocking) -->
+    <link rel="preload" as="style" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="css/style.css">
+    </noscript>
 
     <!-- Schema.org Restaurant Markup -->
     <script type="application/ld+json">
@@ -72,7 +217,7 @@
     <nav class="nav" id="mainNav">
         <div class="nav__container">
             <a href="/" class="nav__logo">
-                <img src="images/logo.png" alt="Au Petit Chez Soi - Logo">
+                <img src="images/logo.webp" alt="Au Petit Chez Soi - Logo" width="50" height="50" fetchpriority="high">
                 <!-- <span class="nav__logo-text">Au Petit Chez Soi</span> -->
             </a>
 
@@ -129,7 +274,8 @@
                 <div class="hero__image-wrapper">
                     <div class="hero__image-circle"></div>
                     <div class="hero__main-image">
-                        <img src="images/chef-cuisine.jpg" alt="Plat signature du restaurant Au Petit Chez Soi">
+                        <img src="images/chef-cuisine.webp" alt="Plat signature du restaurant Au Petit Chez Soi"
+                            fetchpriority="high" width="500" height="500" decoding="async">
                     </div>
                 </div>
             </div>
@@ -227,7 +373,7 @@
             <div class="dishes__grid">
                 <article class="dish-card reveal-up">
                     <div class="dish-card__image">
-                        <img src="images/foie-gras.png" alt="Foie gras maison">
+                        <img src="images/foie-gras.webp" alt="Foie gras maison" width="300" height="300">
                     </div>
                     <div class="dish-card__content">
                         <h3 class="dish-card__title">Foie Gras Maison</h3>
@@ -249,7 +395,7 @@
 
                 <article class="dish-card reveal-up delay-1">
                     <div class="dish-card__image">
-                        <img src="images/escargots.png" alt="Escargots de Bourgogne">
+                        <img src="images/escargots.webp" alt="Escargots de Bourgogne" width="300" height="300">
                     </div>
                     <div class="dish-card__content">
                         <h3 class="dish-card__title">Escargots</h3>
@@ -271,7 +417,7 @@
 
                 <article class="dish-card reveal-up delay-2">
                     <div class="dish-card__image">
-                        <img src="images/os-a-moelle.png" alt="Os à moelle">
+                        <img src="images/os-a-moelle.webp" alt="Os à moelle" width="300" height="300">
                     </div>
                     <div class="dish-card__content">
                         <h3 class="dish-card__title">Os à Moelle</h3>
@@ -292,7 +438,7 @@
 
                 <article class="dish-card reveal-up delay-3">
                     <div class="dish-card__image">
-                        <img src="images/mousse-chocolat.png" alt="Mousse au chocolat">
+                        <img src="images/mousse-chocolat.webp" alt="Mousse au chocolat" width="300" height="300">
                     </div>
                     <div class="dish-card__content">
                         <h3 class="dish-card__title">Mousse Chocolat</h3>
@@ -321,7 +467,7 @@
             <div class="promesse">
                 <div class="promesse__image reveal-left">
                     <div class="promesse__image-wrapper">
-                        <img src="images/chef-cuisine.jpg" alt="Notre chef dressant une assiette avec précision"
+                        <img src="images/chef-cuisine.webp" alt="Notre chef dressant une assiette avec précision"
                             loading="lazy">
                         <div class="promesse__image-accent"></div>
                     </div>
@@ -376,7 +522,8 @@
             <div class="services">
                 <div class="services__image reveal-left">
                     <div class="services__image-wrapper">
-                        <img src="images/salle-interieur.jpg" alt="Chef cuisinier Au Petit Chez Soi" loading="lazy">
+                        <img src="images/salle-interieur.webp" alt="Chef cuisinier Au Petit Chez Soi" loading="lazy"
+                            width="700" height="500">
                     </div>
                 </div>
                 <div class="services__content reveal-right">
@@ -470,33 +617,36 @@
 
             <div class="atmosphere__gallery">
                 <div class="gallery-item gallery-item--large reveal-scale">
-                    <img src="images/batisse-exterieur.jpg" alt="Façade de la bâtisse historique du XVIIe siècle"
-                        loading="lazy">
+                    <img src="images/batisse-exterieur.webp" alt="Façade de la bâtisse historique du XVIIe siècle"
+                        loading="lazy" width="800" height="500">
                     <div class="gallery-item__overlay">
                         <span>Bâtisse du XVIIe siècle</span>
                     </div>
                 </div>
                 <div class="gallery-item reveal-scale delay-1">
-                    <img src="images/salle-interieur.jpg" alt="Salle intérieure avec pierres apparentes" loading="lazy">
+                    <img src="images/salle-interieur.webp" alt="Salle intérieure avec pierres apparentes" loading="lazy"
+                        width="400" height="300">
                     <div class="gallery-item__overlay">
                         <span>Salle authentique</span>
                     </div>
                 </div>
                 <div class="gallery-item reveal-scale delay-2">
-                    <img src="images/details-pierres.jpg" alt="Détails architecturaux en pierre" loading="lazy">
+                    <img src="images/details-pierres.webp" alt="Détails architecturaux en pierre" loading="lazy"
+                        width="400" height="300">
                     <div class="gallery-item__overlay">
                         <span>Détails d'époque</span>
                     </div>
                 </div>
                 <div class="gallery-item reveal-scale delay-3">
-                    <img src="images/chef-action.png" alt="Chef préparant un plat avec précision" loading="lazy">
+                    <img src="images/chef-action.webp" alt="Chef préparant un plat avec précision" loading="lazy"
+                        width="400" height="300">
                     <div class="gallery-item__overlay">
                         <span>Savoir-faire Maison</span>
                     </div>
                 </div>
                 <div class="gallery-item reveal-scale">
-                    <img src="images/table-conviviale.png" alt="Table dressée dans une ambiance chaleureuse"
-                        loading="lazy">
+                    <img src="images/table-conviviale.webp" alt="Table dressée dans une ambiance chaleureuse"
+                        loading="lazy" width="400" height="300">
                     <div class="gallery-item__overlay">
                         <span>Atmosphère Conviviale</span>
                     </div>
@@ -586,7 +736,8 @@
             <div class="footer__grid">
                 <div class="footer__brand">
                     <h3 class="footer__logo">
-                        <img src="images/logo.png" alt="Au Petit Chez Soi" style="height: 60px; width: auto;">
+                        <img src="images/logo.webp" alt="Au Petit Chez Soi" width="60" height="60"
+                            style="height: 60px; width: auto;">
                     </h3>
                     <p class="footer__tagline">Cuisine traditionnelle & fait maison<br>dans un cadre historique</p>
                     <div class="footer__social">
@@ -666,7 +817,7 @@
         </a>
     </div>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 
 </html>

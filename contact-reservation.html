@@ -9,10 +9,17 @@
         content="Réservez votre table au restaurant Au Petit Chez Soi à La Celle-Saint-Cloud. Contactez-nous par téléphone ou via notre formulaire.">
     <link rel="canonical" href="https://aupetitchezsoi.fr/contact-reservation.html">
 
-    <!-- Fontshare - Gambetta + Satoshi -->
-    <link
-        href="https://api.fontshare.com/v2/css?f[]=gambetta@400,401,500,501,600,601,700,701&f[]=satoshi@400,500,700,900&display=swap"
-        rel="stylesheet">
+    <!-- Preconnect to external origins -->
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+
+    <!-- Fontshare - Gambetta + Satoshi (non-blocking) -->
+    <link href="https://api.fontshare.com/v2/css?f[]=gambetta@400,500,600,700&f[]=satoshi@400,500,700&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://api.fontshare.com/v2/css?f[]=gambetta@400,500,600,700&f[]=satoshi@400,500,700&display=swap"
+            rel="stylesheet">
+    </noscript>
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/calendar.css">
@@ -410,7 +417,7 @@
     <nav class="nav scrolled" id="mainNav">
         <div class="nav__container">
             <a href="/" class="nav__logo">
-                <img src="images/logo.png" alt="Au Petit Chez Soi - Logo">
+                <img src="images/logo.webp" alt="Au Petit Chez Soi - Logo" width="50" height="50">
                 <!-- <span class="nav__logo-text">Au Petit Chez Soi</span> -->
             </a>
 
@@ -622,7 +629,7 @@
         <p>&copy; 2024 Au Petit Chez Soi · <a href="/">Retour à l'accueil</a></p>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // --- Input Animations (Existing Logic) ---
