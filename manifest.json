@@ -1,0 +1,23 @@
+{
+    "name": "Au Petit Chez Soi",
+    "short_name": "Au Petit Chez Soi",
+    "description": "Restaurant traditionnel et fait maison à La Celle-Saint-Cloud",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#FAF7F2",
+    "theme_color": "#5D2A2C",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/images/logo.webp",
+            "sizes": "192x192",
+            "type": "image/webp",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "food",
+        "restaurant"
+    ],
+    "lang": "fr-FR"
+}
