@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Actualités & Recettes | Au Petit Chez Soi</title>
+    <meta name="description"
+        content="Découvrez nos actualités, recettes maison et conseils culinaires. Blog du restaurant Au Petit Chez Soi à La Celle-Saint-Cloud.">
+    <link rel="canonical" href="https://aupetitchezsoi.fr/blog/">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .blog-page {
+            min-height: 100vh;
+            padding: 120px 2rem 4rem;
+            background: var(--color-bg);
+        }
+
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .blog-title {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--color-dark);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border: 2px solid var(--color-dark);
+            padding: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-card h2 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .blog-card p {
+            color: var(--color-dark-80);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .blog-meta {
+            font-size: 0.9rem;
+            color: var(--color-dark-60);
+            margin-bottom: 1rem;
+        }
+
+        .blog-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--color-accent);
+            color: white;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav scrolled">
+        <div class="nav__container">
+            <a href="/" class="nav__logo">
+                <img src="../images/logo.webp" alt="Au Petit Chez Soi - Logo" width="50" height="50">
+            </a>
+            <ul class="nav__menu">
+                <li><a href="/" class="nav__link">Accueil</a></li>
+                <li><a href="/carte-restaurant-saison.html" class="nav__link">La Carte</a></li>
+                <li><a href="/contact-reservation.html" class="nav__link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="blog-page">
+        <div class="blog-container">
+            <h1 class="blog-title">Blog & Actualités</h1>
+
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-meta">3 février 2026 • Par Chef Antoine</div>
+                    <h2>Les secrets de notre foie gras maison</h2>
+                    <p>Découvrez comment nous préparons notre foie gras mi-cuit, une recette transmise de génération en
+                        génération. Le secret ? Des produits d'exception et beaucoup de patience...</p>
+                    <div>
+                        <span class="blog-tag">Recettes</span>
+                        <span class="blog-tag">Fait Maison</span>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-meta">1 février 2026 • Par L'équipe</div>
+                    <h2>Nouvelle carte de printemps 2026</h2>
+                    <p>À partir du 15 mars, découvrez notre nouvelle carte de saison ! Au menu : asperges blanches de
+                        Versailles, agneau de lait des Pyrénées, et notre célèbre tarte aux fraises...</p>
+                    <div>
+                        <span class="blog-tag">Actualités</span>
+                        <span class="blog-tag">Menu</span>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-meta">28 janvier 2026 • Par Marie</div>
+                    <h2>L'histoire de notre bâtisse du XVIIe siècle</h2>
+                    <p>Plongez dans l'histoire fascinante de notre restaurant. Cette demeure a vu défiler rois, artistes
+                        et révolutionnaires. Aujourd'hui, elle accueille les amoureux de la bonne cuisine...</p>
+                    <div>
+                        <span class="blog-tag">Histoire</span>
+                        <span class="blog-tag">Patrimoine</span>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-meta">25 janvier 2026 • Par Chef Antoine</div>
+                    <h2>5 raisons de choisir le fait maison</h2>
+                    <p>Pourquoi cuisinons-nous 100% maison ? Qualité, fraîcheur, traçabilité, goût et passion. Découvrez
+                        notre philosophie culinaire et ce qui fait la différence dans chaque assiette...</p>
+                    <div>
+                        <span class="blog-tag">Philosophie</span>
+                        <span class="blog-tag">Qualité</span>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-meta">20 janvier 2026 • Par L'équipe</div>
+                    <h2>Les meilleurs restaurants près de Versailles</h2>
+                    <p>À la recherche d'une table d'exception près du château ? Découvrez notre sélection des meilleures
+                        adresses gastronomiques de la région, dont bien sûr Au Petit Chez Soi...</p>
+                    <div>
+                        <span class="blog-tag">Guide</span>
+                        <span class="blog-tag">Région</span>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-meta">15 janvier 2026 • Par Chef Antoine</div>
+                    <h2>Accord mets et vins : nos conseils</h2>
+                    <p>Comment sublimer votre repas avec le bon vin ? Notre sommelier partage ses secrets pour des
+                        accords parfaits, du foie gras au dessert...</p>
+                    <div>
+                        <span class="blog-tag">Vins</span>
+                        <span class="blog-tag">Conseils</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-minimal"
+        style="background: var(--color-dark); color: white; padding: 2rem; text-align: center; margin-top: 4rem;">
+        <p>&copy; 2026 Au Petit Chez Soi · <a href="/" style="color: var(--color-accent);">Retour à l'accueil</a></p>
+    </footer>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Blog Au Petit Chez Soi",
+      "description": "Actualités, recettes et conseils culinaires du restaurant Au Petit Chez Soi",
+      "url": "https://aupetitchezsoi.fr/blog/",
+      "publisher": {
+        "@type": "Restaurant",
+        "name": "Au Petit Chez Soi",
+        "url": "https://aupetitchezsoi.fr"
+      }
+    }
+    </script>
+</body>
+
+</html>
