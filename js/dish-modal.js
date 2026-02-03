@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </button>
                     
                     <div class="dish-modal__image-wrapper">
-                        <img src="" alt="" class="dish-modal__image" id="modalImage">
+                        <img src="" alt="Vue détaillée du plat" class="dish-modal__image" id="modalImage">
                         <div class="dish-modal__gradient-overlay"></div>
                     </div>
 
