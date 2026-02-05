@@ -45,7 +45,65 @@
 
 ---
 
+## 📱 PHASE 1.5 : SEO SOCIAL (Semaine 2)
+
+### Tâches Réseaux Sociaux
+
+| # | Tâche | Temps | Priorité | Statut | Date |
+|---|-------|-------|----------|--------|------|
+| 1.15 | Créer compte Twitter @aupetitchezsoi | 15 min | 🔥 Critique | ✅ | 05/02/2026 |
+| 1.16 | Créer page LinkedIn entreprise | 20 min | 🔥 Critique | ⬜ | ___/___/___ |
+| 1.17 | Créer chaîne YouTube | 15 min | ⚠️ Important | ⬜ | ___/___/___ |
+| 1.18 | Obtenir Facebook Pixel ID | 10 min | 🔥 Critique | ⬜ | ___/___/___ |
+| 1.19 | Activer Facebook Pixel dans code | 5 min | 🔥 Critique | ⬜ | ___/___/___ |
+| 1.20 | Tester Open Graph (Facebook Debugger) | 10 min | ⚠️ Important | ⬜ | ___/___/___ |
+| 1.21 | Tester Twitter Cards (Card Validator) | 10 min | ⚠️ Important | ⬜ | ___/___/___ |
+| 1.22 | Tester LinkedIn (Post Inspector) | 10 min | ⚠️ Important | ⬜ | ___/___/___ |
+| 1.23 | Préparer 10 premiers posts sociaux | 1h30 | ⚠️ Important | ⬜ | ___/___/___ |
+| 1.24 | Publier premiers contenus | 30 min | ⚠️ Important | ⬜ | ___/___/___ |
+
+**Temps Total Phase 1.5 : 3h35**
+
+**Progression Phase 1.5 :** ✅⬜⬜⬜⬜⬜⬜⬜⬜⬜ 1/10 tâches
+
+### Métadonnées Sociales Enrichies
+
+| Élément | Avant | Après | Statut |
+|---------|-------|-------|--------|
+| **Open Graph Tags** | Basique (5 tags) | Enrichi (15+ tags) | ✅ |
+| **Twitter Cards** | Basique (4 tags) | Enrichi (7 tags) | ✅ |
+| **Facebook Pixel** | ❌ Non installé | ✅ Code ajouté (à activer) | 🟨 |
+| **Liens Footer** | 2 réseaux | 5 réseaux | ✅ |
+| **Schema.org sameAs** | 2 profils | 5 profils | ✅ |
+
+### Objectifs Réseaux Sociaux (3 mois)
+
+| Réseau | Followers Mois 1 | Followers Mois 2 | Followers Mois 3 | Statut |
+|--------|------------------|------------------|------------------|--------|
+| **Facebook** | 50 | 150 | 500 | ⬜ |
+| **Instagram** | 100 | 300 | 800 | ⬜ |
+| **Twitter/X** | 20 | 60 | 200 | ⬜ |
+| **LinkedIn** | 30 | 80 | 150 | ⬜ |
+| **YouTube** | 10 | 30 | 100 | ⬜ |
+
+### Engagement Social (à suivre mensuellement)
+
+| Mois | Posts Publiés | Engagement Moyen | Clics vers Site | Réservations Sociales |
+|------|---------------|------------------|-----------------|----------------------|
+| Mois 1 | ___ | ___% | ___ | ___ |
+| Mois 2 | ___ | ___% | ___ | ___ |
+| Mois 3 | ___ | ___% | ___ | ___ |
+
+**Objectifs Mois 3 :**
+- ✅ 60+ posts publiés (total)
+- ✅ 5%+ engagement moyen
+- ✅ 100+ clics vers site/mois
+- ✅ 5+ réservations via réseaux sociaux
+
+---
+
 ## 📅 PHASE 2 : ENRICHISSEMENT CONTENU (Semaine 3-4)
+
 
 ### Tâches à Réaliser
 
